@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/bernd/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.0/5871fb60dc68d67da54a663c3fd636a10a532948/jsr305-3.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
+        <dex dex="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/pre-dexed/debug/jsr305-3.0.0_59ba2956c4eaa1b3e1f2f215fddc94ec2d9a1016.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="2668e49e4e31c7d451b76a36009b902bf44e0d70">
+        <dex dex="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fbcore-1.0.1_6cfbbec5ee40ee6a07d3318c8a81d575bb0bde47.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/bernd/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0_8e22fa9ad5ffcc35a3bf1db47173721e812541de.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/bernd/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-urlconnection/3.6.0/3f9b16b774f2c36cfd86dd2053d0b3059531dacc/okhttp-urlconnection-3.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="3f9b16b774f2c36cfd86dd2053d0b3059531dacc">
+        <dex dex="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-3.6.0_48d4c3ec344b88c889f9fa073d5278ae105a1cb3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/bernd/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.13.0/a9283170b7305c8d92d25aff02a6ab7e45d06cbe/okio-1.13.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
+        <dex dex="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/pre-dexed/debug/okio-1.13.0_6ea08258937806d3ac82fc9f6e407d66ac5bace0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.47.2/jars/libs/infer-annotations-4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
+        <dex dex="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/pre-dexed/debug/infer-annotations-4.0_b51282f6d0dcc0d881d2a820d12b49425c2d7d18.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="050f688115ea65a0292d8483a6ffe6bcdab1e2ef">
+        <dex dex="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-base-1.0.1_50c66ab1df1feaa9b0ada3ba2443a26a3f50d899.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/bernd/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/pre-dexed/debug/javax.inject-1_3a96790e86aa3aac744addac2a0a5639b65bbfbf.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="5a61f17cd72e20aa4323cbf5f909b7c609619275">
+        <dex dex="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-drawee-1.0.1_ac7ccf1191c7625b71fb1e259f27a31189a200b7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.0.1_b4766be6739499498f66798662d5754d88f1d9bd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.47.2/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="576b5113887747a7592650ae14d980e1c57983c4">
+        <dex dex="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/pre-dexed/debug/com.facebook.react-react-native-0.47.2_44cc5e3e73e8b7ca6a6195b744bab833850497d0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d9c4402c3057225d80cbbbec52154e7a25b0ebdf">
+        <dex dex="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-1.0.1_b7fc559d3f886b912c0f63ea19e2e180addc75b7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-okhttp3/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="ba9b39366b723ccff6359d1117332968e98a4aca">
+        <dex dex="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-okhttp3-1.0.1_ff422a97d533caba727e68c926c5bab8f00c2841.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f90b593491e4044903f0bbf68dc3fa2790b151b9">
+        <dex dex="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/pre-dexed/debug/com.facebook.fbui.textlayoutbuilder-textlayoutbuilder-1.0.0_4deba3edb178f1a8a0d55f1deda15ba7364d3350.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/bernd/.gradle/caches/modules-2/files-2.1/com.facebook.fbui.textlayoutbuilder/staticlayout-proxy/1.0/f162442a19fff13995fbd51ba414d9ee05579080/staticlayout-proxy-1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f162442a19fff13995fbd51ba414d9ee05579080">
+        <dex dex="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/pre-dexed/debug/staticlayout-proxy-1.0_4b9530575ed2de1c33177871429890de7029a728.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="cf836a435a496eb22ff2aa69aa1e619462549f81">
+        <dex dex="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fresco-1.0.1_a6caacb4922485954d3e83c105ba354d9393b738.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.0.1_8a0bc06d4d403bd9e52ff03179fc284001b490a9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/bernd/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1_1969170b7cbb480eeb9c452d59893f91490777f1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/bernd/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.6.0/69edde9fc4b01c9fd51d25b83428837478c27254/okhttp-3.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="69edde9fc4b01c9fd51d25b83428837478c27254">
+        <dex dex="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/pre-dexed/debug/okhttp-3.6.0_603df8968deba75fe93fd314af7b1507923ac0ec.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
+        <dex dex="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/pre-dexed/debug/com.facebook.soloader-soloader-0.1.0_50c7140992ec0ae42fa84fc9b6df06b2ff15562c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="/Users/bernd/Hack/aja/Frontend/android/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1_0fd7add01fab123d941f163b02f95a680fc80b5a.jar" />
+    </item>
+
+</items>
