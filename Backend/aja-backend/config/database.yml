@@ -83,5 +83,3 @@ test:
 production:
   <<: *default
   database: aja-backend_production
-  username: aja-backend
-  password: <%= ENV['AJA-BACKEND_DATABASE_PASSWORD'] %>
