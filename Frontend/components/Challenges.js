@@ -17,10 +17,20 @@ export class Challenges extends React.Component {
     )
   }
 
-  renderChallengeItem({item}, navigation, user_id, friends){
-    let avatar_url = user_id === item.sender_id ? friends.find((friend) => friend.id === item.receiver_id).image_url : friends.find((friend) => friend.id === item.sender_id).image_url
+  renderChallengeItem({item}){
+    const navigation = this.props.navigation
+    const user_id = this.props.user_id
+    const friends = this.props.friends
+    try {
+      let avatar_url = user_id === item.sender_id
+        ? friends.find((friend) => friend.id === item.receiver_id).image_url
+        : friends.find((friend) => friend.id === item.sender_id).image_url
 
-    return <ChallengeListItem challenge={item} key={item.key} navigation={navigation} avatar={avatar_url} title={item.comment} clock={item.updated_at} state={item.relativeState}/>
+      return <ChallengeListItem challenge={item} key={item.key} navigation={navigation} avatar={avatar_url}
+                                title={item.comment} clock={item.updated_at} state={item.relativeState}/>
+    } catch (e) {
+      return null
+    }
   }
 
   render() {
@@ -29,11 +39,8 @@ export class Challenges extends React.Component {
     let list = this.props.challenges.map((elem) => ({...elem, key: elem.id}))
     list = list.map((item) => {
       let relativeState
-      console.log(item.state)
-      console.log(item.sender_id, user_id)
       if (item.state === 'open'){
         if (item.sender_id === user_id){
-          console.log('adddd')
           relativeState = 'pending'
         }
         else {
@@ -64,7 +71,7 @@ export class Challenges extends React.Component {
             {data: listPending, title: 'Pending'},
             {data: listCompleted, title: 'Completed'},
           ]}
-          renderItem={(item) => this.renderChallengeItem(item, this.props.navigation, user_id, this.props.friends)}
+          renderItem={this.renderChallengeItem.bind(this)}
           ItemSeparatorComponent={this.itemSeperator}
           onRefresh={() => this.props.refreshChallengesScreen()}
           refreshing={false}

@@ -2,13 +2,17 @@ import { call, put, takeEvery, takeLatest, select } from 'redux-saga/effects'
 import { NavigationActions } from 'react-navigation'
 import http from './http'
 import {
-  GET_CHALLENGE_LIST, GET_CHALLENGE_LIST_RESULT, GET_FRIENDS_LIST, GET_FRIENDS_LIST_RESULT, IMG_TAKEN, POST_CHALLENGE,
+  GET_CHALLENGE_LIST, GET_CHALLENGE_LIST_RESULT, GET_FRIENDS_LIST, GET_FRIENDS_LIST_RESULT, IMG_TAKEN, LOGIN,
+  LOGIN_RESULT,
+  POST_CHALLENGE,
   POST_CHALLENGE_RESULT, REPLY_CHALLENGE
 } from './actions'
 
-function* init () {
-  yield put({type: GET_FRIENDS_LIST})
-  yield put({type: GET_CHALLENGE_LIST})
+function* init (action) {
+  if (!action.payload.error) {
+    yield put({type: GET_FRIENDS_LIST})
+    yield put({type: GET_CHALLENGE_LIST})
+  }
 }
 
 function* postChallenge(action) {
@@ -114,6 +118,26 @@ function* replyChallenge(action) {
   }
 }
 
+function* login(action) {
+  try {
+    yield call(http.get, `user/${action.payload.user}/valid`)
+    yield put({
+      type: LOGIN_RESULT,
+      payload: {
+        user: action.payload.user,
+        error: false,
+      }
+    })
+  } catch (e) {
+    yield put({
+      type: LOGIN_RESULT,
+      payload: {
+        error: true,
+      }
+    })
+  }
+}
+
 /*
   Alternatively you may use takeLatest.
 
@@ -122,12 +146,13 @@ function* replyChallenge(action) {
   and only the latest one will be run.
 */
 const mySaga = function* mySaga() {
-  yield takeLatest('INIT', init)
+  yield takeLatest(LOGIN_RESULT, init)
   yield takeLatest(GET_FRIENDS_LIST, getFriends)
   yield takeLatest(GET_CHALLENGE_LIST, getChallenges)
   yield takeLatest(POST_CHALLENGE, postChallenge);
   yield takeLatest(IMG_TAKEN, imgTaken);
   yield takeLatest(REPLY_CHALLENGE, replyChallenge)
+  yield takeLatest(LOGIN, login)
 }
 
 export default mySaga;

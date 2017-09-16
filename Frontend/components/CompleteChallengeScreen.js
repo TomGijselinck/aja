@@ -55,6 +55,8 @@ class PostChallengeScreen extends React.PureComponent {
             <View style={styles.imageContainer}>
               <Image resizeMode='contain' style={styles.image}
                      source={{uri: `data:image/jpg;base64,${this.state.challenge.photo}`}}/>
+              <Image resizeMode='contain' style={styles.image}
+                     source={{uri: `data:image/jpg;base64,${this.props.image}`}}/>
             </View>
             <View style={styles.inputContainer}>
               <Text style={[commonStyles.fontRegular, styles.input]}>{this.state.challenge.comment}</Text>
