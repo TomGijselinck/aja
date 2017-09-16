@@ -4,6 +4,8 @@ import { List, ListItem } from 'react-native-elements'
 import Header from './Header.js'
 import { connect } from 'react-redux'
 import Screen from './Screen.js'
+import colors from '../colors.js'
+import commonstyle from '../styles.js'
 
 import ChallengeListItem from './ChallengeListItem.js'
 
@@ -53,7 +55,7 @@ export class Challenges extends React.Component {
       <Screen>
         <Header title='Challenges'/>
         <SectionList
-          renderSectionHeader={({section}) => <Text style={styles.sectionListHeader}>{section.title}</Text>}
+          renderSectionHeader={({section}) => <Text style={[commonstyle.fontBold, styles.sectionListHeader]}>{section.title}</Text>}
           sections={[ // homogenous rendering between sections
             {data: listIncoming, title: 'Incoming'},
             {data: listPending, title: 'Pending'},
@@ -85,8 +87,9 @@ const styles = StyleSheet.create({
 
   sectionListHeader: {
     fontSize: 18,
-    backgroundColor: 'lightgray',
+    backgroundColor: colors.headerListColor,
     padding: 6,
+    marginBottom: 2,
   },
 });
 

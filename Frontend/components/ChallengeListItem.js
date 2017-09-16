@@ -2,9 +2,14 @@ import React, {Component} from 'react';
 import { TouchableHighlight, StyleSheet, Text, View, FlatList } from 'react-native';
 import { List, ListItem, Avatar } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/Entypo';
+import Ionicon from 'react-native-vector-icons/Ionicons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 const myIcon = (<Icon name="trending up" size={30} color="#900" />)
 import moment from 'moment';
 import TimerMixin from 'react-timer-mixin';
+import commonstyle from '../styles.js'
+import colors from '../colors.js'
 
 export default class ChallengeListItem extends React.Component {
   mixins: [TimerMixin]
@@ -87,8 +92,13 @@ export default class ChallengeListItem extends React.Component {
           />
         </View>
         <View style={styles.container2}>
-          <Text style={styles.texttitle}>{title}</Text>
-          <Text style={styles.clock}>{timer}</Text>
+          <Text style={[commonstyle.fontRegular, styles.texttitle]}>{title}</Text>
+          <View style={styles.clockContainer}>
+            <View style={styles.containerIconClock}>
+             <MaterialCommunityIcons name="alarm" size={25} color={colors.background} style={{marginRight: 5, marginLeft: 5}}/>
+             <Text style={[commonstyle.fontRegular, styles.clock]}>{timer}</Text>
+            </View>
+          </View>
         </View>
 
         <TouchableHighlight style={styles.container3} onPress={() => this.pressArrowHandler(navigation)}>
@@ -139,22 +149,53 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
+  containerIconClock: {
+    flexDirection: 'row',
+    backgroundColor: '#DE9796',
+    borderRadius: 8,
+    padding: 2,
+    paddingLeft: 4,
+    paddingRight: 4,
+    //alignSelf: 'center',
+    alignItems: 'center',
+
+    // color: colors.background,
+
+  },
 
   avatar: {
     marginLeft: 10,
   },
 
   texttitle: {
-    flex: 1,
     //marginLeft: 20,
     fontSize: 20,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
+  },
+
+  clockContainer: {
+    //flex: 0,
+    //alignItems: 'flex-start',
+    width: 123,
+    justifyContent: 'center',
   },
 
   clock: {
     //marginHorizontal: 10,
+    //flex: 0,
     fontSize: 20,
-    fontWeight: 'bold',
+    color: colors.background,
+    // backgroundColor: '#DE9796',
+    borderWidth: 0,
+    borderColor: '#591E1D',
+    borderRadius: 8,
+    padding: 2,
+    paddingLeft: 4,
+    paddingRight: 4,
+    //alignSelf: 'center',
+    textAlign: 'center',
+    // padding: 4,
+    // fontWeight: 'bold',
     //alignSelf: 'center'
   },
 
