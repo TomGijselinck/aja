@@ -56,13 +56,13 @@ export default class ChallengeListItem extends React.Component {
 
     let stateIcon
     if (state === 'incoming'){
-      stateIcon = <Icon name="arrow-bold-right" size={60} color="grey"/>
+      stateIcon = <Icon name="chevron-right" size={40} color="grey"/>
     }
     else if (state === 'pending'){
-      stateIcon = <Icon name="dots-three-horizontal" size={60} color="grey"/>
+      stateIcon = <Icon name="dots-three-horizontal" size={40} color="grey"/>
     }
     else{
-      stateIcon = <Icon name="check" size={60} color="grey"/>
+      stateIcon = <Icon name="check" size={25} color="grey"/>
     }
 
     let timer = this.state.timer
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     //alignItems: 'center',
-    paddingVertical: 20,
+    paddingVertical: 10,
     //justifyContent: 'space-around'
     // justifyContent: 'center',
   },
