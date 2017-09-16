@@ -10,7 +10,7 @@
 		{
 			"name": "get user",
 			"request": {
-				"url": "{{url}}/user/3",
+				"url": "{{url}}/user/1",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -129,6 +129,37 @@
 						"description": ""
 					}
 				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "register device token for user",
+			"request": {
+				"url": "{{url}}/user/1/register_device_token",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"device_token\": \"a bogus device token\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get challenges of a user",
+			"request": {
+				"url": "{{url}}/user/1/challenges",
+				"method": "GET",
+				"header": [],
 				"body": {},
 				"description": ""
 			},
