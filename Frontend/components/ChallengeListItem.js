@@ -8,8 +8,18 @@ function pressArrowHandler(navigation){
   navigation.navigate('CameraScreen')
 }
 
-export default function ChallengeListItem({children, navigation, avatar, title, clock}) {
-  
+export default function ChallengeListItem({children, navigation, avatar, title, clock, state}) {
+  let stateIcon
+  if (state === 'incoming'){
+    stateIcon = <Icon name="arrow-bold-right" size={60} color="grey"/>
+  }
+  else if (state === 'pending'){
+    stateIcon = <Icon name="dots-three-horizontal" size={60} color="grey"/>
+  }
+  else{
+    stateIcon = <Icon name="check" size={60} color="grey"/>
+  }
+
   return (
     <View style={styles.parentContainer}>
       <View style={styles.avatarContainer}>
@@ -26,8 +36,9 @@ export default function ChallengeListItem({children, navigation, avatar, title, 
         <Text style={styles.texttitle}>{title}</Text>
         <Text style={styles.clock}>{clock}</Text>
       </View>
+
       <TouchableHighlight style={styles.container3} onPress={() => pressArrowHandler(navigation)}>
-        <Icon name="arrow-bold-right" size={60} color="grey"/>
+        {stateIcon}
       </TouchableHighlight>
     </View>
   )
