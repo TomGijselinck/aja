@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'user/show'
   get 'user/:id', to: 'user#show'
   post 'user', to: 'user#create'
+  get 'user/:id/friends', to: 'user#friends'
 
   # Challenge
   get 'challenge/:id', to: 'challenge#show'

@@ -15,6 +15,7 @@ class UserController < ApplicationController
   end
 
   def friends
-    # TODO
+    friends = User.find(params[:id]).friends
+    render json: friends.to_json(include: [:challenges_received, :challenges_send])
   end
 end
