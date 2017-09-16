@@ -5,6 +5,11 @@ import FriendListItem from './FriendListItem.js'
 
 
 export default class App extends React.Component {
+  itemSeperator(){
+    return (
+      <View style={styles.seperator}/>
+    )
+  }
   render() {
     const list = [
       {
@@ -37,8 +42,9 @@ export default class App extends React.Component {
 
     return ( 
       <FlatList
-          data={[{name: 'Xenia222', score: 5, key: 1}, {name: 'Bernd', score: -1, key: 2}]}
+          data={[{name: 'Xenia', score: 5, key: 1}, {name: 'Bernd', score: -1, key: 2}]}
           renderItem={({item}) => <FriendListItem name={item.name} score={item.score}></FriendListItem>}
+          ItemSeparatorComponent={this.itemSeperator}
         /> 
     )
   }
@@ -51,4 +57,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  seperator: {
+    height: 1,
+    flex: 1,
+    backgroundColor: 'grey',
+    opacity: 0.5,
+    marginLeft: 70
+  }
 });

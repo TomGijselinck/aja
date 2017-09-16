@@ -6,10 +6,10 @@ import App2 from './components/Friends'
 
 const MyApp = TabNavigator({
   Home: {
-    screen: App,
+    screen: App2,
   },
   Notifications: {
-    screen: App2,
+    screen: App,
   },
 }, {
   tabBarComponent: () => null,
