@@ -4,12 +4,18 @@ module NotificationHelper
   FIREBASE_NOTIFICATION_URL = 'https://fcm.googleapis.com/fcm/send'
   FIREBASE_SERVER_API_KEY = ENV['firebase_server_key']
 
-  def send_test_notification
+  def send_test_notification(user)
     notification = {}
     notification[:title] = 'Testing cool stuff!'
     notification[:description] = "This is a super awesome push notification"
-    device_token = "bogus-token"
-    send_notification(notification, device_token)
+    send_notification(notification, user.device_token)
+  end
+
+  def send_challenge_create_notification(sending_user, receiving_user)
+    notification = {}
+    notification[:title] = "New Challenge from #{sending_user.name}!"
+    notification[:description] = "#{sending_user.name.capitalize} send you a new challenge."
+    send_notification(notification, receiving_user)
   end
 
   def send_notification(headers = {},params = {},notification, device_token)

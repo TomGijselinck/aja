@@ -11,6 +11,9 @@ class ChallengeController < ApplicationController
   def create
     challenge_params = params.require(:challenge).permit(:photo, :sender_id, :receiver_id, :comment, :state)
     challenge = Challenge.create(challenge_params)
+    sender = User.find(challenge_params[:sender_id])
+    receiver = User.find(challenge_params[:receiver_id])
+    NotificationHelper.send_challenge_create_notification(sender, receiver)
     if challenge
       render json: { head: :ok }
     else
