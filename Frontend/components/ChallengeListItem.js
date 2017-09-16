@@ -44,21 +44,22 @@ const styles = StyleSheet.create({
   },
 
   avatarContainer: {
-    flex: 1,
-    flexDirection: 'row',
+    //flex: 1,
+    //flexDirection: 'row',
     backgroundColor: 'white',
     alignItems: 'center',
     paddingVertical: 20,
     //justifyContent: 'space-around'
-    // justifyContent: 'center',
+    justifyContent: 'center',
   },
 
   container2: {
     flex: 1,
     //flexDirection: 'row',
     backgroundColor: 'white',
-    alignItems: 'flex-start',
+    //alignItems: 'flex-start',
     paddingVertical: 20,
+    marginLeft: 20,
     //justifyContent: 'space-around'
     // justifyContent: 'center',
   },
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     marginRight: 10,
     //justifyContent: 'space-around'
-    // justifyContent: 'center',
+    justifyContent: 'center',
   },
 
 
