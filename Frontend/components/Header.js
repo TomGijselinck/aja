@@ -25,12 +25,12 @@ const styles = StyleSheet.create({
     height:60,
     //paddingVertical: 20,
     //justifyContent: 'space-around'
-    // justifyContent: 'center',
+    justifyContent: 'center',
   },
   title: {
     flex: 1,
     marginLeft: 10,
-    fontSize: 30,
+    fontSize: 25,
     // fontWeight: 'bold',
     color: 'white',
   },

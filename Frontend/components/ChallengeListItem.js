@@ -18,19 +18,25 @@ export default class ChallengeListItem extends React.Component {
   }
 
   componentDidMount() {
+    this._mounted = true
     this.updateClock(this)
+  }
+  componentWillUnmount() {
+    this._mounted = false;
   }
 
   updateClock(that) {
     TimerMixin.setTimeout(() => {
-      let clockDate = moment(that.props.clock)
-      let endTimer = clockDate.add(24, 'hours')
-      var timeLeft = moment.duration((endTimer.unix() - moment().unix()) * 1000, 'milliseconds')  
-      let timer = moment.utc(moment.duration(timeLeft).asMilliseconds()).format("HH:mm:ss")
+      if(that._mounted) {
+        let clockDate = moment(that.props.clock)
+        let endTimer = clockDate.add(24, 'hours')
+        var timeLeft = moment.duration((endTimer.unix() - moment().unix()) * 1000, 'milliseconds')  
+        let timer = moment.utc(moment.duration(timeLeft).asMilliseconds()).format("HH:mm:ss")
 
-      that.setState({
-        timer: timer,
-      })
+        that.setState({
+          timer: timer,
+        })
+      }
 
       that.updateClock(that)
     }, 1000);
