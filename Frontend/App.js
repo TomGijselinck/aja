@@ -3,6 +3,7 @@ import { TabNavigator } from 'react-navigation'
 
 import App from './components/App'
 import App2 from './components/Friends'
+import CameraScreen from './components/CameraScreen'
 
 const MyApp = TabNavigator({
   Home: {
@@ -11,6 +12,9 @@ const MyApp = TabNavigator({
   Notifications: {
     screen: App,
   },
+  CameraScreen: {
+    screen: CameraScreen,
+  }
 }, {
   tabBarComponent: () => null,
   tabBarPosition: 'bottom',
