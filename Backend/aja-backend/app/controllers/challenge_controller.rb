@@ -1,7 +1,7 @@
 class ChallengeController < ApplicationController
   def show
     if params.has_key? :user_id
-      challenges = Challenge.where(receiver_id: params[:user_id]).or(Challenge.where(sender_id: params[:id]))
+      challenges = Challenge.where(receiver_id: params[:user_id]).or(Challenge.where(sender_id: params[:user_id]))
     else
       challenges = challenge = Challenge.find(params[:id])
     end
