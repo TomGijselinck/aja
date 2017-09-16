@@ -16,7 +16,15 @@ class UserController < ApplicationController
 
   def friends
     friends = User.find(params[:id]).friends
-    render json: friends.to_json(include: [:challenges_received, :challenges_send])
+    render json: friends
+  end
+
+  def challenges
+    user = User.find(params[:id])
+    render json: {
+        'challenges_received': user.challenges_received,
+        'challenges_send': user.challenges_send
+    }
   end
 
   def register_device_token
