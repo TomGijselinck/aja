@@ -9,7 +9,7 @@ class ChallengeController < ApplicationController
   end
 
   def create
-    challenge_params = params.require(:challenge).permit(:photo, :sender_id, :receiver_id, :comment, :state)
+    challenge_params = params.require(:challenge).permit(:photo, :reply_photo, :sender_id, :receiver_id, :comment, :state)
     challenge = Challenge.create(challenge_params)
     sender = User.find(challenge_params[:sender_id])
     receiver = User.find(challenge_params[:receiver_id])
@@ -19,6 +19,14 @@ class ChallengeController < ApplicationController
     else
       render json: { head: :bad_request, message: 'Unable to create challenge' }
     end
+  end
+
+  def reply
+    challenge = Challenge.find(params[:id])
+    challenge.reply_photo = params[:reply_photo]
+    challenge.save!
+    Rails.logger.info(challenge.errors.messages.inspect)
+    render json: { head: :ok }
   end
 
   def fullfill_challenge
