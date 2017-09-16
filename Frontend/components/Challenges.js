@@ -29,8 +29,11 @@ export class Challenges extends React.Component {
     let list = this.props.challenges.map((elem) => ({...elem, key: elem.id}))
     list = list.map((item) => {
       let relativeState
+      console.log(item.state)
+      console.log(item.sender_id, user_id)
       if (item.state === 'open'){
         if (item.sender_id === user_id){
+          console.log('adddd')
           relativeState = 'pending'
         }
         else {

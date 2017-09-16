@@ -32,7 +32,7 @@ class FriendPicker extends React.PureComponent {
           <Avatar containerStyle={styles.avatar}
                   small
                   rounded
-                  source={{uri: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"}}
+                  source={{uri: item.image_url}}
                   activeOpacity={1}
           />
           <Text> {item.name} </Text>

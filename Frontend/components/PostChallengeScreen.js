@@ -18,6 +18,7 @@ class PostChallengeScreen extends React.PureComponent {
     this.state = {
       selectedFriend: null,
       modalOpen: false,
+      comment: ''
     }
   }
 
@@ -42,8 +43,13 @@ class PostChallengeScreen extends React.PureComponent {
 
   onSubmit () {
     if (this.state.selectedFriend && this.props.image) {
-      this.props.sendChallenge(this.props.image)
+      this.props.sendChallenge(this.props.image, this.state.selectedFriend.id, this.state.comment)
     }
+  }
+
+  onTextChanged(comment) {
+    // code to remove non-numeric characters from text
+    this.setState({comment})
   }
 
   render () {
@@ -59,11 +65,13 @@ class PostChallengeScreen extends React.PureComponent {
               placeholder="What's your challenge?"
               maxLength={50}
               underlineColorAndroid='white'
+              onChangeText = {(text)=> this.onTextChanged(text)}
+              value = {this.state.comment}
             />
           </View>
           <TouchableOpacity style={styles.friend} onPress={this.openModal.bind(this)}>
             {this.state.selectedFriend
-              ? <Friend name={this.state.selectedFriend.name} avatar={this.state.selectedFriend.image_url}/>
+              ? <Friend friend={this.state.selectedFriend} avatarProp={this.state.selectedFriend.image_url}/>
               : <View style={styles.friendContainer}>
                 <Avatar containerStyle={styles.avatar}
                         medium
@@ -146,11 +154,11 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    sendChallenge (photo) {
+    sendChallenge (photo, receiver_id, comment) {
       dispatch({ type: POST_CHALLENGE, payload: {
+        comment,
         photo,
-        sender_id: 2,
-        receiver_id: 1,
+        receiver_id,
       }})
     },
   }
