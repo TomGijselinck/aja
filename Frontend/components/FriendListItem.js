@@ -34,7 +34,7 @@ export default function FriendListItem({children, name, score}) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     flexDirection: 'row',
     backgroundColor: 'white',
     alignItems: 'center',

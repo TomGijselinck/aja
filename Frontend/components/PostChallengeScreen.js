@@ -1,9 +1,9 @@
 import React from 'react'
-import { Image, TextInput, View, StyleSheet } from 'react-native'
+import { Image, TextInput, View, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 
 import { connect } from 'react-redux'
-import { Button } from 'react-native-elements'
+import { Button, Avatar } from 'react-native-elements'
 
 import Friend from './FriendListItem'
 import FriendsPicker from './FriendsModal'
@@ -15,6 +15,7 @@ class PostChallengeScreen extends React.PureComponent {
     super(props)
 
     this.state = {
+      selectedFriend: null,
       modalOpen: false,
     }
   }
@@ -31,6 +32,15 @@ class PostChallengeScreen extends React.PureComponent {
     })
   }
 
+  friendSelected (friend) {
+    console.log(friend)
+    this.setState({
+      selectedFriend: this.props.friends.filter((item) => item.id === friend)[0],
+      modalOpen: false,
+    })
+
+  }
+
   render () {
     return (
       <Screen>
@@ -39,9 +49,27 @@ class PostChallengeScreen extends React.PureComponent {
             <Image resizeMode='contain' style={styles.image} source={{uri: `data:image/jpg;base64,${this.props.image}`}} />
           </View>
           <View style={styles.inputContainer}>
-            <TextInput placeholder='Challenge' />
+            <TextInput
+              style={styles.input}
+              placeholder="What's your challenge?"
+              maxLength={50}
+              underlineColorAndroid='white'
+            />
           </View>
-          <Friend containerStyle={styles.friend} />
+          <TouchableOpacity style={styles.friend} onPress={this.openModal.bind(this)}>
+            {this.state.selectedFriend
+              ? <Friend name={this.state.selectedFriend.name}/>
+              : <View style={styles.friendContainer}>
+                <Avatar containerStyle={styles.avatar}
+                        medium
+                        rounded
+                        title="?"
+                        activeOpacity={1}
+                />
+                <Text style={styles.input}>Select a friend...</Text>
+              </View>
+            }
+          </TouchableOpacity>
           <Button
             raised
             large
@@ -53,6 +81,7 @@ class PostChallengeScreen extends React.PureComponent {
           isOpen={this.state.modalOpen}
           onClosed={this.closeModal.bind(this)}
           friends={this.props.friends}
+          onFriendSelected={this.friendSelected.bind(this)}
         />
       </Screen>
     )
@@ -66,6 +95,9 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     flex: 2,
+    paddingBottom: 5,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: 'lightgray',
   },
   image: {
     width: '100%',
@@ -73,16 +105,29 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     flex: 1,
+    justifyContent: 'center',
+  },
+  input: {
+    fontSize: 20,
   },
   text: {
 
   },
+  friendContainer: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
   friend: {
+    // flex: 1,
+    paddingVertical: 10,
     borderTopWidth: StyleSheet.hairlineWidth,
     borderTopColor: 'lightgray',
   },
   button: {
     backgroundColor: 'lightblue'
+  },
+  avatar: {
+    marginHorizontal: 10,
   },
 })
 
