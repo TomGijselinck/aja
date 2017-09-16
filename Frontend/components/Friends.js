@@ -3,49 +3,35 @@ import { StyleSheet, Text, View, FlatList } from 'react-native';
 import { List, ListItem } from 'react-native-elements'
 import FriendListItem from './FriendListItem.js'
 import Header from './Header.js'
+import { connect } from 'react-redux'
 
-
-export default class Friends extends React.Component {
+export class Friends extends React.Component {
   itemSeperator(){
     return (
       <View style={styles.seperator}/>
     )
   }
   render() {
-    const list = [
-      {
-        name: 'Amy Farha',
-        avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-        subtitle: 'Vice President'
-      },
-      {
-        name: 'Chris Jacksonsss',
-        avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-        subtitle: 'Vice Chairman'
-      }
-    ]
+    // const list = [
+    //   {
+    //     name: 'Amy Farha',
+    //     avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+    //     subtitle: 'Vice President'
+    //   },
+    //   {
+    //     name: 'Chris Jacksonsss',
+    //     avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+    //     subtitle: 'Vice Chairman'
+    //   }
+    // ]
 
-    /* <FlatList
-          data={[{name: 'Xenia', score: 5, key: 1}, {name: 'Bernd', score: -1, key: 2}]}
-          renderItem={({item}) => <Text>{item.name}</Text>}
-        />
-      </View> */
-
-      /*
-      <ListItem
-                roundAvatar
-                avatar={{uri:l.avatar_url}}
-                key={i}
-                title={l.name}
-                subtitle={l.subtitle}
-              />
-      */
+    let list = this.props.friends.map((elem) => ({name: elem.name, score: 5, key: elem.id, avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg'}))
 
     return ( 
       <View style={{flex: 1}}>
         <Header title='Friends'/>
         <FlatList
-          data={[{name: 'Xenia', score: 5, key: 1}, {name: 'Bernd', score: -1, key: 2}]}
+          data={list}
           renderItem={({item}) => <FriendListItem name={item.name} score={item.score}></FriendListItem>}
           ItemSeparatorComponent={this.itemSeperator}
         /> 
@@ -53,7 +39,7 @@ export default class Friends extends React.Component {
     )
   }
 }
-
+// {[{name: 'Xenia', score: 5, key: 1}, {name: 'Bernd', score: -1, key: 2}]}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -70,3 +56,14 @@ const styles = StyleSheet.create({
     marginLeft: 70
   }
 });
+
+function mapStateToProps (state) {
+  return {
+    friends: state.friends,
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  null,
+)(Friends)
