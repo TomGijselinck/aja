@@ -34,7 +34,7 @@ export default class Challenges extends React.Component {
         <Header title='Challenges'/>
         <FlatList
           data={list}
-          renderItem={({item}) => <ChallengeListItem avatar={item.avatar_url} title={item.title} clock={item.clock}></ChallengeListItem>}
+          renderItem={({item}) => <ChallengeListItem navigation={this.props.navigation} avatar={item.avatar_url} title={item.title} clock={item.clock}></ChallengeListItem>}
           ItemSeparatorComponent={this.itemSeperator}
         /> 
       </View>

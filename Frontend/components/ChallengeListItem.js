@@ -1,12 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { TouchableHighlight, StyleSheet, Text, View, FlatList } from 'react-native';
 import { List, ListItem, Avatar } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/Entypo';
 const myIcon = (<Icon name="trending up" size={30} color="#900" />)
 
+function pressArrowHandler(navigation){
+  navigation.navigate('CameraScreen')
+}
 
-
-export default function ChallengeListItem({children, avatar, title, clock}) {
+export default function ChallengeListItem({children, navigation, avatar, title, clock}) {
   
   return (
     <View style={styles.parentContainer}>
@@ -24,9 +26,9 @@ export default function ChallengeListItem({children, avatar, title, clock}) {
         <Text style={styles.texttitle}>{title}</Text>
         <Text style={styles.clock}>{clock}</Text>
       </View>
-      <View style={styles.container3}>
+      <TouchableHighlight style={styles.container3} onPress={() => pressArrowHandler(navigation)}>
         <Icon name="arrow-bold-right" size={60} color="grey"/>
-      </View>
+      </TouchableHighlight>
     </View>
   )
 }
