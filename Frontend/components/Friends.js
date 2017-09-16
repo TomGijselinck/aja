@@ -13,14 +13,14 @@ export class Friends extends React.Component {
     )
   }
   render() {
-    let list = this.props.friends.map((elem) => ({name: elem.name, score: elem.score, key: elem.id, avatar: elem.image_url}))
+    let list = this.props.friends.map((elem) => ({name: elem.name, score: elem.score, key: elem.id, number_of_send_challenges_completed: elem.number_of_send_challenges_completed, number_of_send_challenges_failed: elem.number_of_send_challenges_failed, number_of_received_challenges_completed: elem.number_of_received_challenges_completed, number_of_received_challenges_failed: elem.number_of_received_challenges_failed, avatar: elem.image_url}))
 
     return ( 
       <Screen>
         <Header title='Friends'/>
         <FlatList
           data={list}
-          renderItem={({item}) => <FriendListItem name={item.name} score={item.score} avatar={item.avatar}></FriendListItem>}
+          renderItem={({item}) => <FriendListItem friend={item}></FriendListItem>}
           ItemSeparatorComponent={this.itemSeperator}
         /> 
       </Screen>

@@ -5,7 +5,16 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 const myIcon = (<Icon name="trending up" size={30} color="#900" />)
 import colors from '../colors.js'
 
-export default function FriendListItem({children, name, score, avatar}) {
+export default function FriendListItem({children, friend}) {
+  const {
+    name,
+    score,
+    number_of_received_challenges_completed,
+    number_of_received_challenges_failed,
+    number_of_send_challenges_completed,
+    number_of_send_challenges_failed,
+    avatar
+  } = friend
   let scoreSpecific 
   if (score >= 0) {
     scoreSpecific = styles.scorePositive
@@ -25,7 +34,7 @@ export default function FriendListItem({children, name, score, avatar}) {
         activeOpacity={0.7}
       />
       <Text style={styles.textname}>{name}</Text>
-      <Text style={[styles.textscore, scoreSpecific]}>{'5 : 3'}</Text>
+      <Text style={[styles.textscore, scoreSpecific]}>{number_of_received_challenges_completed - number_of_received_challenges_failed} : {number_of_send_challenges_completed - number_of_send_challenges_failed}</Text>
     </View>
   )
 }
