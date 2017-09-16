@@ -2,7 +2,7 @@ module NotificationHelper
   require 'httparty'
 
   FIREBASE_NOTIFICATION_URL = 'https://fcm.googleapis.com/fcm/send'
-  FIREBASE_SERVER_API_KEY = ENV['web_api_key']
+  FIREBASE_SERVER_API_KEY = ENV['firebase_server_key']
 
   def send_test_notification
     notification = {}
