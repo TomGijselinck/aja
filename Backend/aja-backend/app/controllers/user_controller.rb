@@ -53,6 +53,7 @@ class UserController < ApplicationController
         friend_details = {}
         friend_details[:id] = friend.id
         friend_details[:name] = friend.name
+        friend_details[:image_url] = friend.image_url
         friend_details[:score] = friend.score - user.score
         friends_json.append friend_details
       end
