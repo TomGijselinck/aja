@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'challenge', to: 'challenge#show'
   post 'challenge', to: 'challenge#create'
   post 'fullfill_challenge', to: 'challenge#fullfill_challenge'
-  patch 'challenge/:id/reply', to: 'challenge#reply'
+  post 'challenge/:id/reply', to: 'challenge#reply'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
