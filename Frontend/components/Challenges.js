@@ -49,19 +49,27 @@ export class Challenges extends React.Component {
         }
       }
       else {
-        relativeState = 'completed'
+        if (item.state === 'failed'){
+          relativeState = 'failed'
+        }
+        else{
+          relativeState = 'completed'
+        }
       }
 
       return {...item, relativeState}
     })
 
+
     const sortRecentFirst = (a, b) => moment(a.created_at).unix() - moment(b.created_at).unix()
 
     const listPending = list.filter((elem) => elem.relativeState === 'pending').sort(sortRecentFirst)
     const listIncoming = list.filter((elem) => elem.relativeState === 'incoming').sort(sortRecentFirst)
-    const listCompleted = list.filter((elem) => elem.relativeState === 'completed').sort(sortRecentFirst).reverse()
+    const listFinished = list.filter((elem) => elem.relativeState === 'completed' || elem.relativeState === 'failed').sort(sortRecentFirst).reverse()
+    // const listFailed = list.filter((elem) => elem.relativeState === 'failed')
 
-    const orderedList = [...listIncoming, ...listPending, ...listCompleted]
+
+    const orderedList = [...listIncoming, ...listPending, ...listFinished]
 
     // data={orderedList}
     return ( 
@@ -72,7 +80,7 @@ export class Challenges extends React.Component {
           sections={[ // homogenous rendering between sections
             {data: listIncoming, title: 'Incoming'},
             {data: listPending, title: 'Pending'},
-            {data: listCompleted, title: 'Completed'},
+            {data: listFinished, title: 'Finished'},
           ]}
           renderItem={this.renderChallengeItem.bind(this)}
           ItemSeparatorComponent={this.itemSeperator}

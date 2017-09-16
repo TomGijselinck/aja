@@ -90,7 +90,12 @@ export default class ChallengeListItem extends React.Component {
       stateIcon = <Icon name="dots-three-horizontal" size={40} color={colors.text}/>
     }
     else{
-      clockView = <Text style={[commonstyle.fontRegular, {color: colors.main, fontSize: 20}]}>{'Completed!'}</Text>
+      if (state === 'completed') {
+        clockView = <Text style={[commonstyle.fontRegular, {color: colors.main, fontSize: 20}]}>{'Completed!'}</Text>
+      }
+      else{
+        clockView = <Text style={[commonstyle.fontRegular, {color: colors.darkRed, fontSize: 20}]}>{'Failed!'}</Text>
+      }
     }
 
     return (
