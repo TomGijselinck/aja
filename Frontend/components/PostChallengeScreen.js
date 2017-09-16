@@ -3,23 +3,58 @@ import { Image, TextInput, View, StyleSheet } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 
 import { connect } from 'react-redux'
+import { Button } from 'react-native-elements'
 
-import SubmitButton from './SubmitButton'
 import Friend from './FriendListItem'
+import FriendsPicker from './FriendsModal'
+import Screen from './Screen'
 
 class PostChallengeScreen extends React.PureComponent {
+
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      modalOpen: false,
+    }
+  }
+
+  openModal () {
+    this.setState({
+      modalOpen: true,
+    })
+  }
+
+  closeModal () {
+    this.setState({
+      modalOpen: false,
+    })
+  }
+
   render () {
     return (
-      <KeyboardAwareScrollView contentContainerStyle={styles.container}>
-        <View style={styles.imageContainer}>
-          <Image resizeMode='contain' style={styles.image} source={{uri: `data:image/jpg;base64,${this.props.image}`}} />
-        </View>
-        <View style={styles.inputContainer}>
-          <TextInput placeholder='Challenge' />
-        </View>
-        <Friend containerStyle={styles.friend} />
-        <SubmitButton containerStyle={styles.submit}/>
-      </KeyboardAwareScrollView>
+      <Screen>
+        <KeyboardAwareScrollView contentContainerStyle={styles.container}>
+          <View style={styles.imageContainer}>
+            <Image resizeMode='contain' style={styles.image} source={{uri: `data:image/jpg;base64,${this.props.image}`}} />
+          </View>
+          <View style={styles.inputContainer}>
+            <TextInput placeholder='Challenge' />
+          </View>
+          <Friend containerStyle={styles.friend} />
+          <Button
+            raised
+            large
+            buttonStyle={styles.button}
+            title='Submit'
+          />
+        </KeyboardAwareScrollView>
+        <FriendsPicker
+          isOpen={this.state.modalOpen}
+          onClosed={this.closeModal.bind(this)}
+          friends={this.props.friends}
+        />
+      </Screen>
     )
   }
 }
@@ -46,14 +81,15 @@ const styles = StyleSheet.create({
     borderTopWidth: StyleSheet.hairlineWidth,
     borderTopColor: 'lightgray',
   },
-  submit: {
-
+  button: {
+    backgroundColor: 'lightblue'
   },
 })
 
 function mapStateToProps (state) {
   return {
     image: state.currentImage,
+    friends: state.friends,
   }
 }
 

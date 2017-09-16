@@ -43,6 +43,8 @@ const store = createStore(
 
 sagaMiddleware.run(mySaga)
 
+store.dispatch({type: 'INIT'})
+
 export default function MyApp () {
   return (
     <Provider store={store}>

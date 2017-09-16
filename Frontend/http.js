@@ -11,8 +11,6 @@ const request = ({path, method, ...options}) => {
     'Content-Type': 'application/json',
   }
 
-  console.log(options)
-
   return window.fetch('https://secret-mountain-18274.herokuapp.com/' + path, {
     method: method,
     headers,
@@ -20,7 +18,7 @@ const request = ({path, method, ...options}) => {
   })
     .then(response => {return response.json()})
     .then(responseData => {
-      return Promise.resolve(responseData.body)
+      return Promise.resolve(responseData)
     }, error => {
       console.log('error fetch')
       console.error(error)
