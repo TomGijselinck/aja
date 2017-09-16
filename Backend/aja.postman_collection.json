@@ -10,7 +10,7 @@
 		{
 			"name": "get user",
 			"request": {
-				"url": "{{url}}/user/1",
+				"url": "{{url}}/user/3",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -21,7 +21,7 @@
 		{
 			"name": "get challenge",
 			"request": {
-				"url": "{{url}}/challenge/1",
+				"url": "{{url}}/challenge/7",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -43,7 +43,75 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"challenge\": \n\t\t{\n\t\t\t\"photo\": \"photoinbase64example\",\n\t\t\t\"comment\": \"do this crazy shit\",\n\t\t\t\"receiver_id\": 1,\n\t\t\t\"sender_id\": 2\n\t\t}\n}"
+					"raw": "{\n\t\"challenge\": \n\t\t{\n\t\t\t\"photo\": \"photoinbase64example\",\n\t\t\t\"comment\": \"do this crazy shit\",\n\t\t\t\"receiver_id\": 1,\n\t\t\t\"sender_id\": 2,\n\t\t\t\"state\": \"open\"\n\t\t}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get challenges for a user",
+			"request": {
+				"url": {
+					"raw": "{{url}}/challenge?user_id=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"challenge"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "fullfull challenge",
+			"request": {
+				"url": "{{url}}/fullfill_challenge",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"challenge_id\": 5\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "create user",
+			"request": {
+				"url": "{{url}}/user",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"user\": {\n\t\t\"name\": \"Xenia\"\n\t}\n}"
 				},
 				"description": ""
 			},
