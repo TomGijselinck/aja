@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, View, StyleSheet, Text } from 'react-native'
+import { Image, View, StyleSheet, Text, ScrollView, Dimensions } from 'react-native'
 
 import { connect } from 'react-redux'
 import { Button, Avatar } from 'react-native-elements'
@@ -8,6 +8,8 @@ import { REPLY_CHALLENGE } from '../actions'
 import Friend from './FriendListItem'
 import Screen from './Screen'
 import commonStyles from '../styles'
+
+const {width, height} = Dimensions.get('window')
 
 class PostChallengeScreen extends React.PureComponent {
 
@@ -52,12 +54,12 @@ class PostChallengeScreen extends React.PureComponent {
       return (
         <Screen>
           <View style={styles.container}>
-            <View style={styles.imageContainer}>
+            <ScrollView horizontal style={styles.imageContainer}>
               <Image resizeMode='contain' style={styles.image}
                      source={{uri: `data:image/jpg;base64,${this.state.challenge.photo}`}}/>
               <Image resizeMode='contain' style={styles.image}
                      source={{uri: `data:image/jpg;base64,${this.props.image}`}}/>
-            </View>
+            </ScrollView>
             <View style={styles.inputContainer}>
               <Text style={[commonStyles.fontRegular, styles.input]}>{this.state.challenge.comment}</Text>
             </View>
@@ -90,7 +92,7 @@ const styles = StyleSheet.create({
     borderBottomColor: 'lightgray',
   },
   image: {
-    width: '100%',
+    width: width,
     height: '100%',
   },
   inputContainer: {
