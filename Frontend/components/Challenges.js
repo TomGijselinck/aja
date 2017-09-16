@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, SectionList } from 'react-native';
 import { List, ListItem } from 'react-native-elements'
 import Header from './Header.js'
 import { connect } from 'react-redux'
@@ -48,11 +48,17 @@ export class Challenges extends React.Component {
 
     const orderedList = [...listIncoming, ...listPending, ...listCompleted]
 
+    // data={orderedList}
     return ( 
       <Screen>
         <Header title='Challenges'/>
-        <FlatList
-          data={orderedList}
+        <SectionList
+          renderSectionHeader={({section}) => <Text style={styles.sectionListHeader}>{section.title}</Text>}
+          sections={[ // homogenous rendering between sections
+            {data: listIncoming, title: 'Incoming'},
+            {data: listPending, title: 'Pending'},
+            {data: listCompleted, title: 'Completed'},
+          ]}
           renderItem={(item) => this.renderChallengeItem(item, this.props.navigation, user_id, this.props.friends)}
           ItemSeparatorComponent={this.itemSeperator}
         /> 
@@ -75,7 +81,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'grey',
     opacity: 0.5,
     marginLeft: 70
-  }
+  },
+
+  sectionListHeader: {
+    fontSize: 18,
+    backgroundColor: 'lightgray',
+    padding: 6,
+  },
 });
 
 function mapStateToProps (state) {
