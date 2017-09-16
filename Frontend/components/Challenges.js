@@ -18,7 +18,7 @@ export class Challenges extends React.Component {
   renderChallengeItem({item}, navigation, user_id, friends){
     let avatar_url = user_id === item.sender_id ? friends.find((friend) => friend.id === item.receiver_id).image_url : friends.find((friend) => friend.id === item.sender_id).image_url
 
-    return <ChallengeListItem key={item.key} navigation={navigation} avatar={avatar_url} title={item.comment} clock={item.updated_at} state={item.relativeState}></ChallengeListItem>
+    return <ChallengeListItem challenge={item} key={item.key} navigation={navigation} avatar={avatar_url} title={item.comment} clock={item.updated_at} state={item.relativeState}/>
   }
 
   render() {

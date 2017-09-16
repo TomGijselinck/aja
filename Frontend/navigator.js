@@ -5,6 +5,7 @@ import Challenges from './components/Challenges'
 import Friends from './components/Friends'
 import CameraScreen from './components/CameraScreen'
 import PostChallengeScreen from './components/PostChallengeScreen'
+import CompleteChallengeScreen from './components/CompleteChallengeScreen'
 
 export const Navigator = TabNavigator({
   Home: {
@@ -18,6 +19,9 @@ export const Navigator = TabNavigator({
   },
   PostChallenge: {
     screen: PostChallengeScreen,
+  },
+  CompleteChallenge: {
+    screen: CompleteChallengeScreen
   }
 }, {
   tabBarComponent: () => null,
@@ -32,7 +36,6 @@ export const Navigator = TabNavigator({
 class App extends React.Component {
   render () {
     const {dispatch, nav} = this.props
-    console.log(nav)
     return (
       <Navigator
         navigation={addNavigationHelpers({

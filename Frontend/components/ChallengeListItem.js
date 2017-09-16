@@ -42,17 +42,27 @@ export default class ChallengeListItem extends React.Component {
     }, 1000);
   }
 
-  pressArrowHandler(navigation){
-    console.log('putain')
-    navigation.navigate('CameraScreen')
+  pressArrowHandler() {
+    const {
+      navigation,
+      state,
+      challenge
+    } = this.props
+    if (state === 'incoming') {
+      navigation.navigate('CompleteChallenge', {challenge})
+    } else {
+      navigation.navigate('CameraScreen')
+    }
   }
 
   render() {
-    let navigation = this.props.navigation
-    let avatar = this.props.avatar
-    let title = this.props.title
-    let clock = this.props.clock
-    let state = this.props.state
+    const {
+      navigation,
+      avatar,
+      title,
+      clock,
+      state,
+    } = this.props
 
     let stateIcon
     if (state === 'incoming'){
@@ -91,7 +101,7 @@ export default class ChallengeListItem extends React.Component {
           <Text style={styles.clock}>{timer}</Text>
         </View>
 
-        <TouchableHighlight style={styles.container3} onPress={() => this.pressArrowHandler(navigation)}>
+        <TouchableHighlight style={styles.container3} onPress={this.pressArrowHandler.bind(this)}>
           {stateIcon}
         </TouchableHighlight>
       </View>
