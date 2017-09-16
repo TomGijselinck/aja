@@ -26,7 +26,7 @@ export default function FriendListItem({children, name, score}) {
         activeOpacity={0.7}
       />
       <Text style={styles.textname}>{name}</Text>
-      <Icon name="trending-up" size={30} color="#900" />
+      <Icon name="trending-up" size={30} color="grey"/>
       <Text style={[styles.textscore, scoreSpecific]}>{score}</Text>
     </View>
   )
@@ -54,9 +54,10 @@ const styles = StyleSheet.create({
   },
 
   textscore: {
-    marginRight: 10,
+    marginHorizontal: 10,
     fontSize: 20,
     fontWeight: 'bold',
+    alignSelf: 'center'
   },
 
   scorePositive:{

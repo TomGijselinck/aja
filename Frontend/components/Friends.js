@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import { List, ListItem } from 'react-native-elements'
 import FriendListItem from './FriendListItem.js'
+import Header from './Header.js'
 
 
 export default class App extends React.Component {
@@ -41,11 +42,14 @@ export default class App extends React.Component {
       */
 
     return ( 
-      <FlatList
+      <View style={{flex: 1}}>
+        <Header title='Friends'/>
+        <FlatList
           data={[{name: 'Xenia', score: 5, key: 1}, {name: 'Bernd', score: -1, key: 2}]}
           renderItem={({item}) => <FriendListItem name={item.name} score={item.score}></FriendListItem>}
           ItemSeparatorComponent={this.itemSeperator}
         /> 
+      </View>
     )
   }
 }
