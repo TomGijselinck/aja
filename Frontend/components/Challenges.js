@@ -16,72 +16,44 @@ export class Challenges extends React.Component {
   }
 
   renderChallengeItem({item}, navigation, user_id, friends){
-    console.log('le item')
-    console.log(item)
-    console.log('something else')
-
-    let state
-    if (item.state === 'open'){
-      if (item.sender_id === user_id){
-        state = 'pending'
-      }
-      else {
-        state = 'incoming'
-      }
-    }
-    else {
-      state = 'completed'
-    }
-
     let avatar_url = user_id === item.sender_id ? friends.find((friend) => friend.id === item.receiver_id).image_url : friends.find((friend) => friend.id === item.sender_id).image_url
 
-    console.log('I dont understand')
-    console.log(avatar_url)
-
-    return <ChallengeListItem navigation={navigation} avatar={avatar_url} title={item.comment} clock={item.updated_at} state={state}></ChallengeListItem>
+    return <ChallengeListItem key={item.key} navigation={navigation} avatar={avatar_url} title={item.comment} clock={item.updated_at} state={item.relativeState}></ChallengeListItem>
   }
 
   render() {
-    // const list = [
-    //   {
-    //     key: 1,
-    //     name: 'Xenia',
-    //     avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-    //     title: 'Eat an apple asap',
-    //     clock: '01:23:12',
-    //     state: 'open',
-    //     sender_id: 1,
-    //     receiver_id: 2,
-    //   },
-    //   {
-    //     key: 2,
-    //     name: 'Bernd',
-    //     avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-    //     title: 'Go for a run you lazy old man',
-    //     clock: '12:24:47',
-    //     state: 'open',
-    //     sender_id: 3,
-    //     receiver_id: 1,
-    //   },
-    //   {
-    //     key: 3,
-    //     name: 'Tom',
-    //     avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-    //     title: 'cook something nice',
-    //     clock: '12:24:47',
-    //     state: 'closed',
-    //     sender_id: 4,
-    //     receiver_id: 1,
-    //   },
-    // ]
-    const list = this.props.challenges.map((elem) => ({...elem, key: elem.id}))
+    const user_id = this.props.user_id
+
+    let list = this.props.challenges.map((elem) => ({...elem, key: elem.id}))
+    list = list.map((item) => {
+      let relativeState
+      if (item.state === 'open'){
+        if (item.sender_id === user_id){
+          relativeState = 'pending'
+        }
+        else {
+          relativeState = 'incoming'
+        }
+      }
+      else {
+        relativeState = 'completed'
+      }
+
+      return {...item, relativeState}
+    })
+
+    const listPending = list.filter((elem) => elem.relativeState === 'pending')
+    const listIncoming = list.filter((elem) => elem.relativeState === 'incoming')
+    const listCompleted = list.filter((elem) => elem.relativeState === 'completed')
+
+    const orderedList = [...listIncoming, ...listPending, ...listCompleted]
 
     return ( 
       <Screen>
         <Header title='Challenges'/>
         <FlatList
-          data={list}
-          renderItem={(item) => this.renderChallengeItem(item, this.props.navigation, this.props.user_id, this.props.friends)}
+          data={orderedList}
+          renderItem={(item) => this.renderChallengeItem(item, this.props.navigation, user_id, this.props.friends)}
           ItemSeparatorComponent={this.itemSeperator}
         /> 
       </Screen>
