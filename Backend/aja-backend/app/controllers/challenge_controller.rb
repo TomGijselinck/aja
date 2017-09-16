@@ -25,8 +25,12 @@ class ChallengeController < ApplicationController
     challenge = Challenge.find(params[:id])
     challenge.reply_photo = params[:reply_photo]
     challenge.save!
-    Rails.logger.info(challenge.errors.messages.inspect)
-    render json: { head: :ok }
+    if Challenge.find(challenge.id).reply_photo
+      render json: { head: :ok }
+    else
+      Rails.logger.info(challenge.errors.messages.inspect)
+      render json: { head: :internal_server_error }
+    end
   end
 
   def fullfill_challenge
