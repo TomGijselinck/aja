@@ -4,8 +4,10 @@ import { List, ListItem, Avatar } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/Entypo';
 const myIcon = (<Icon name="trending up" size={30} color="#900" />)
 import moment from 'moment';
+import TimerMixin from 'react-timer-mixin';
 
 export default class ChallengeListItem extends React.Component {
+  mixins: [TimerMixin]
 
   constructor (props) {
     super(props)
@@ -15,8 +17,12 @@ export default class ChallengeListItem extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.updateClock(this)
+  }
+
   updateClock(that) {
-    setTimeout(() => {
+    TimerMixin.setTimeout(() => {
       let clockDate = moment(that.props.clock)
       let endTimer = clockDate.add(24, 'hours')
       var timeLeft = moment.duration((endTimer.unix() - moment().unix()) * 1000, 'milliseconds')  
@@ -31,6 +37,7 @@ export default class ChallengeListItem extends React.Component {
   }
 
   pressArrowHandler(navigation){
+    console.log('putain')
     navigation.navigate('CameraScreen')
   }
 
@@ -52,10 +59,15 @@ export default class ChallengeListItem extends React.Component {
       stateIcon = <Icon name="check" size={60} color="grey"/>
     }
 
-    this.updateClock(this)
-
     let timer = this.state.timer
-      
+
+    if (timer == '') {
+      let clockDate = moment(this.props.clock)
+      let endTimer = clockDate.add(24, 'hours')
+      var timeLeft = moment.duration((endTimer.unix() - moment().unix()) * 1000, 'milliseconds')  
+      timer = moment.utc(moment.duration(timeLeft).asMilliseconds()).format("HH:mm:ss")
+    }
+
     return (
       <View style={styles.parentContainer}>
         <View style={styles.avatarContainer}>
