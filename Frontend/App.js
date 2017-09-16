@@ -1,15 +1,15 @@
 import React from 'react';
 import { TabNavigator } from 'react-navigation'
 
-import App from './components/App'
-import App2 from './components/Friends'
+import Challenges from './components/Challenges'
+import Friends from './components/Friends'
 
 const MyApp = TabNavigator({
   Home: {
-    screen: App2,
+    screen: Friends,
   },
   Notifications: {
-    screen: App,
+    screen: Challenges,
   },
 }, {
   tabBarComponent: () => null,
