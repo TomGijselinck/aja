@@ -1,0 +1,53 @@
+{
+	"variables": [],
+	"info": {
+		"name": "aja",
+		"_postman_id": "2e06c7e5-7817-5adf-156c-71dc47b658c0",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get user",
+			"request": {
+				"url": "{{url}}/user/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get challenge",
+			"request": {
+				"url": "{{url}}/challenge/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "create challenge",
+			"request": {
+				"url": "{{url}}/challenge",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"challenge\": \n\t\t{\n\t\t\t\"photo\": \"photoinbase64example\",\n\t\t\t\"comment\": \"do this crazy shit\",\n\t\t\t\"receiver_id\": 1,\n\t\t\t\"sender_id\": 2\n\t\t}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
