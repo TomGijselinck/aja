@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'user/:id', to: 'user#show'
   post 'user', to: 'user#create'
   get 'user/:id/friends', to: 'user#friends'
+  post 'user/:id/register_device_token', to: 'user#register_device_token'
 
   # Challenge
   get 'challenge/:id', to: 'challenge#show'

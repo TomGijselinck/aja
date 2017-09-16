@@ -5,7 +5,7 @@ class UserController < ApplicationController
   end
 
   def create
-    user_params = params.require(:user).permit(:name)
+    user_params = params.require(:user).permit(:name, :device_token)
     user = User.create(user_params)
     if user
       render json: { head: :ok }
@@ -17,5 +17,12 @@ class UserController < ApplicationController
   def friends
     friends = User.find(params[:id]).friends
     render json: friends.to_json(include: [:challenges_received, :challenges_send])
+  end
+
+  def register_device_token
+    user = User.find(params[:id])
+    user.device_token = params[:device_token]
+    user.save
+    render json: { head: :ok }
   end
 end
