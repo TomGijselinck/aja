@@ -6,7 +6,7 @@ const myIcon = (<Icon name="trending up" size={30} color="#900" />)
 
 
 
-export default function FriendListItem({children, name, score}) {
+export default function FriendListItem({children, name, score, avatar}) {
   let scoreSpecific 
   if (score >= 0) {
     scoreSpecific = styles.scorePositive
@@ -21,7 +21,7 @@ export default function FriendListItem({children, name, score}) {
         /* small */
         medium
         rounded
-        source={{uri: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"}}
+        source={{uri: avatar}}
         onPress={() => console.log("Works!")}
         activeOpacity={0.7}
       />

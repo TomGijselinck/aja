@@ -25,14 +25,14 @@ export class Friends extends React.Component {
     //   }
     // ]
 
-    let list = this.props.friends.map((elem) => ({name: elem.name, score: 5, key: elem.id, avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg'}))
+    let list = this.props.friends.map((elem) => ({name: elem.name, score: 5, key: elem.id, avatar: elem.image_url}))
 
     return ( 
       <View style={{flex: 1}}>
         <Header title='Friends'/>
         <FlatList
           data={list}
-          renderItem={({item}) => <FriendListItem name={item.name} score={item.score}></FriendListItem>}
+          renderItem={({item}) => <FriendListItem name={item.name} score={item.score} avatar={item.avatar}></FriendListItem>}
           ItemSeparatorComponent={this.itemSeperator}
         /> 
       </View>

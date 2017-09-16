@@ -32,8 +32,10 @@ export class Challenges extends React.Component {
       state = 'completed'
     }
 
-    // let avatar_url = user_id === item.sender_id ? friends.filter((friend) => friend.id === elem.receiver_id).image : friends.filter((friend) => friend.id === elem.sender_id).image
-    avatar_url = 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg'
+    let avatar_url = user_id === item.sender_id ? friends.find((friend) => friend.id === item.receiver_id).image_url : friends.find((friend) => friend.id === item.sender_id).image_url
+
+    console.log('I dont understand')
+    console.log(avatar_url)
 
     return <ChallengeListItem navigation={navigation} avatar={avatar_url} title={item.comment} clock={item.updated_at} state={state}></ChallengeListItem>
   }
