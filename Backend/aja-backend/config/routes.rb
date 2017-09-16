@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # User
   get 'user/show'
   get 'user/:id', to: 'user#show'
+  post 'user', to: 'user#create'
 
   # Challenge
   get 'challenge/:id', to: 'challenge#show'

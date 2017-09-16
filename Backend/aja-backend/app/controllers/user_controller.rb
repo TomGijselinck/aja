@@ -3,4 +3,14 @@ class UserController < ApplicationController
     user = User.find(params[:id]).to_json
     render json: user
   end
+
+  def create
+    user_params = params.require(:user).permit(:name)
+    user = User.create(user_params)
+    if user
+      render json: { head: :ok }
+    else
+      render json: { head: :bad_request, message: 'Unable to create user' }
+    end
+  end
 end
