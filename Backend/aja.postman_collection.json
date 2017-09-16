@@ -116,6 +116,23 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "get list of friends",
+			"request": {
+				"url": "{{url}}/user/1/friends",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }
