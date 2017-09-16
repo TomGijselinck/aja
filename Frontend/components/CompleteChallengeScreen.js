@@ -59,7 +59,7 @@ class PostChallengeScreen extends React.PureComponent {
             <View style={styles.inputContainer}>
               <Text style={[commonStyles.fontRegular, styles.input]}>{this.state.challenge.comment}</Text>
             </View>
-            <Friend name={friend.name} avatar={friend.image_url}/>
+            <Friend friend={friend} avatarProp={friend.image_url}/>
             <Button
               raised
               large

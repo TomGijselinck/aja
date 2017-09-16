@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import Screen from './Screen.js'
 import colors from '../colors.js'
 import commonstyle from '../styles.js'
-
+import { GET_CHALLENGE_LIST } from '../actions'
 import ChallengeListItem from './ChallengeListItem.js'
 
 export class Challenges extends React.Component {
@@ -66,6 +66,8 @@ export class Challenges extends React.Component {
           ]}
           renderItem={(item) => this.renderChallengeItem(item, this.props.navigation, user_id, this.props.friends)}
           ItemSeparatorComponent={this.itemSeperator}
+          onRefresh={() => this.props.refreshChallengesScreen()}
+          refreshing={false}
         /> 
       </Screen>
     )
@@ -91,6 +93,7 @@ const styles = StyleSheet.create({
   sectionListHeader: {
     fontSize: 18,
     backgroundColor: colors.headerListColor,
+    color: colors.text,
     padding: 6,
     marginBottom: 2,
   },
@@ -104,8 +107,16 @@ function mapStateToProps (state) {
   }
 }
 
+function mapDispatchToProps (dispatch) {
+  return {
+    refreshChallengesScreen () {
+      dispatch({ type: GET_CHALLENGE_LIST, payload: {}})
+    },
+  }
+}
+
 export default connect(
   mapStateToProps,
-  null,
+  mapDispatchToProps,
 )(Challenges)
 
