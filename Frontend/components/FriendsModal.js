@@ -1,6 +1,7 @@
 import React from 'react'
 import { FlatList, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
 import Modal from 'react-native-modalbox'
+import { Avatar } from 'react-native-elements'
 
 class FriendPicker extends React.PureComponent {
   render () {
@@ -8,7 +9,7 @@ class FriendPicker extends React.PureComponent {
 
     return (
       <Modal
-        style={style.modal}
+        style={styles.modal}
         isOpen={isOpen}
         onClosed={onClosed}
         coverScreen
@@ -26,19 +27,35 @@ class FriendPicker extends React.PureComponent {
 
   renderRow ({item, index}) {
     return (
-      <TouchableWithoutFeedback last onPress={() => { this.props.onOptionsSelection(item.id) }}>
-        <Text> {item.name} </Text>
+      <TouchableWithoutFeedback onPress={() => { this.props.onFriendSelected(item.id) }}>
+        <View style={styles.friend} >
+          <Avatar containerStyle={styles.avatar}
+                  small
+                  rounded
+                  source={{uri: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"}}
+                  activeOpacity={1}
+          />
+          <Text> {item.name} </Text>
+        </View>
       </TouchableWithoutFeedback>
     )
   }
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   modal: {
     height: 'auto',
     maxHeight: '90%',
     width: '85%',
     borderRadius: 3,
+  },
+  friend: {
+    flexDirection: 'row',
+    paddingVertical: 10,
+    alignItems: 'center'
+  },
+  avatar: {
+    marginHorizontal: 10,
   },
 })
 
