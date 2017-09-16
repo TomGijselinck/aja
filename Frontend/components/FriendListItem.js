@@ -16,7 +16,11 @@ export default function FriendListItem({children, friend}) {
     avatar
   } = friend
   let scoreSpecific 
-  if (score >= 0) {
+
+  let received_challenges_diff = number_of_received_challenges_completed - number_of_received_challenges_failed
+  let send_challenges_diff = number_of_send_challenges_completed - number_of_send_challenges_failed
+  
+  if (received_challenges_diff >= send_challenges_diff) {
     scoreSpecific = styles.scorePositive
   }
   else {
@@ -34,7 +38,7 @@ export default function FriendListItem({children, friend}) {
         activeOpacity={0.7}
       />
       <Text style={styles.textname}>{name}</Text>
-      <Text style={[styles.textscore, scoreSpecific]}>{number_of_received_challenges_completed - number_of_received_challenges_failed} : {number_of_send_challenges_completed - number_of_send_challenges_failed}</Text>
+      <Text style={[styles.textscore, scoreSpecific]}>{received_challenges_diff} : {send_challenges_diff}</Text>
     </View>
   )
 }
