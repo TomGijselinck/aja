@@ -63,7 +63,7 @@ class PostChallengeScreen extends React.PureComponent {
           </View>
           <TouchableOpacity style={styles.friend} onPress={this.openModal.bind(this)}>
             {this.state.selectedFriend
-              ? <Friend name={this.state.selectedFriend.name} avatar={this.state.selectedFriend.image_url}/>
+              ? <Friend friend={this.state.selectedFriend} avatarProp={this.state.selectedFriend.image_url}/>
               : <View style={styles.friendContainer}>
                 <Avatar containerStyle={styles.avatar}
                         medium
