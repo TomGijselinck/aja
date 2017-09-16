@@ -36,6 +36,14 @@ class UserController < ApplicationController
     render json: { head: :ok }
   end
 
+  def validate_id
+    if User.exists?(params[:id])
+      render json: { message: 'Valid user ID!' }, status: 200
+    else
+      render json: { message: 'Invalid user ID' }, status: 401
+    end
+  end
+
   private
 
     def check_for_challenge_expiration(user)
