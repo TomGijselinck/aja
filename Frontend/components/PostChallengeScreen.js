@@ -9,6 +9,7 @@ import { POST_CHALLENGE } from '../actions'
 import Friend from './FriendListItem'
 import FriendsPicker from './FriendsModal'
 import Screen from './Screen'
+import colors from '../colors.js'
 
 class PostChallengeScreen extends React.PureComponent {
 
@@ -84,9 +85,10 @@ class PostChallengeScreen extends React.PureComponent {
             }
           </TouchableOpacity>
           <Button
-            raised
+            fontFamily={'RobotoSlab-Bold'}
             large
             buttonStyle={styles.button}
+            fontSize={20}
             title='Submit'
             onPress={this.onSubmit.bind(this)}
           />
@@ -105,6 +107,7 @@ class PostChallengeScreen extends React.PureComponent {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
+    // paddingHorizontal: 5,
     flex: 1,
   },
   imageContainer: {
@@ -138,7 +141,8 @@ const styles = StyleSheet.create({
     borderTopColor: 'lightgray',
   },
   button: {
-    backgroundColor: 'lightblue'
+    backgroundColor: colors.main,
+    borderRadius: 8,
   },
   avatar: {
     marginHorizontal: 10,
