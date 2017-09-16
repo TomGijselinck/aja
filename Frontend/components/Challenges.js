@@ -1,11 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import { List, ListItem } from 'react-native-elements'
-import ChallengeListItem from './ChallengeListItem.js'
 import Header from './Header.js'
 import { connect } from 'react-redux'
 
+import ChallengeListItem from './ChallengeListItem.js'
+
 export class Challenges extends React.Component {
+
   itemSeperator(){
     return (
       <View style={styles.seperator}/>
