@@ -17,4 +17,11 @@ class ChallengeController < ApplicationController
       render json: { head: :bad_request, message: 'Unable to create challenge' }
     end
   end
+
+  def fullfill_challenge
+    challenge = Challenge.find(params[:challenge_id])
+    challenge.state = 'closed'
+    challenge.save
+    render json: { head: :ok, message: 'Completed challenge successfully!' }
+  end
 end

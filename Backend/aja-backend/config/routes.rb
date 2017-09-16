@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'challenge/:id', to: 'challenge#show'
   get 'challenge', to: 'challenge#show'
   post 'challenge', to: 'challenge#create'
+  post 'fullfill_challenge', to: 'challenge#fullfill_challenge'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
