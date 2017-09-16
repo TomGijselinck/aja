@@ -4,6 +4,7 @@ import { List, ListItem, Avatar } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 const myIcon = (<Icon name="trending up" size={30} color="#900" />)
 import colors from '../colors.js'
+import commonstyle from '../styles.js'
 
 export default function FriendListItem({children, friend, avatarProp}) {
   const {
@@ -37,8 +38,8 @@ export default function FriendListItem({children, friend, avatarProp}) {
         onPress={() => console.log("Works!")}
         activeOpacity={0.7}
       />
-      <Text style={styles.textname}>{name}</Text>
-      <Text style={[styles.textscore, scoreSpecific]}>{received_challenges_diff} : {send_challenges_diff}</Text>
+      <Text style={[commonstyle.fontBold,styles.textname]}>{name}</Text>
+      <Text style={[commonstyle.fontBold, styles.textscore, scoreSpecific]}>{received_challenges_diff} : {send_challenges_diff}</Text>
     </View>
   )
 }
@@ -61,14 +62,14 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 20,
     fontSize: 20,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     color: colors.text
   },
 
   textscore: {
     marginHorizontal: 10,
     fontSize: 25,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     alignSelf: 'center',
   },
 
