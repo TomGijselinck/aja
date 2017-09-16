@@ -10,7 +10,7 @@
 		{
 			"name": "get user",
 			"request": {
-				"url": "{{url}}/user/1",
+				"url": "{{url}}/user/6",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -43,7 +43,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"challenge\": \n\t\t{\n\t\t\t\"photo\": \"photoinbase64example\",\n\t\t\t\"comment\": \"do this crazy shit\",\n\t\t\t\"receiver_id\": 1,\n\t\t\t\"sender_id\": 2,\n\t\t\t\"state\": \"open\"\n\t\t}\n}"
+					"raw": "{\n\t\"challenge\": \n\t\t{\n\t\t\t\"photo\": \"photoinbase64example\",\n\t\t\t\"comment\": \"do this crazy shit\",\n\t\t\t\"receiver_id\": 3,\n\t\t\t\"sender_id\": 2,\n\t\t\t\"state\": \"closed\"\n\t\t}\n}"
 				},
 				"description": ""
 			},
@@ -111,7 +111,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"user\": {\n\t\t\"name\": \"Xenia\"\n\t}\n}"
+					"raw": "{\n\t\"user\": {\n\t\t\"name\": \"Bernd\"\n\t}\n}"
 				},
 				"description": ""
 			},
@@ -120,7 +120,7 @@
 		{
 			"name": "get list of friends",
 			"request": {
-				"url": "{{url}}/user/1/friends",
+				"url": "{{url}}/user/2/friends",
 				"method": "GET",
 				"header": [
 					{
@@ -157,10 +157,30 @@
 		{
 			"name": "get challenges of a user",
 			"request": {
-				"url": "{{url}}/user/1/challenges",
+				"url": "{{url}}/user/2/challenges",
 				"method": "GET",
 				"header": [],
 				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "reply challenge",
+			"request": {
+				"url": "{{url}}/challenge/4/reply",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"reply_photo\": \"reply photo\"\n}"
+				},
 				"description": ""
 			},
 			"response": []
