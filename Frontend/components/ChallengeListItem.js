@@ -68,17 +68,6 @@ export default class ChallengeListItem extends React.Component {
       state,
     } = this.props
 
-    let stateIcon
-    if (state === 'incoming'){
-      stateIcon = <Icon name="chevron-right" size={40} color="grey"/>
-    }
-    else if (state === 'pending'){
-      stateIcon = <Icon name="dots-three-horizontal" size={40} color="grey"/>
-    }
-    else{
-      stateIcon = <Icon name="check" size={25} color="grey"/>
-    }
-
     let timer = this.state.timer
 
     if (timer == '') {
@@ -86,6 +75,22 @@ export default class ChallengeListItem extends React.Component {
       let endTimer = clockDate.add(24, 'hours')
       var timeLeft = moment.duration((endTimer.unix() - moment().unix()) * 1000, 'milliseconds')  
       timer = moment.utc(moment.duration(timeLeft).asMilliseconds()).format("HH:mm:ss")
+    }
+
+    let stateIcon
+    let clockView = (
+        <View style={styles.containerIconClock}>
+          <MaterialCommunityIcons name="alarm" size={25} color={colors.background} style={{marginRight: 5, marginLeft: 5}}/>
+          <Text style={[commonstyle.fontRegular, styles.clock]}>{timer}</Text>
+        </View>)
+    if (state === 'incoming'){
+      stateIcon = <Icon name="chevron-right" size={40} color="grey"/>
+    }
+    else if (state === 'pending'){
+      stateIcon = <Icon name="dots-three-horizontal" size={40} color="grey"/>
+    }
+    else{
+      clockView = <Text style={[commonstyle.fontRegular, {color: colors.main, fontSize: 20}]}>{'Completed!'}</Text>
     }
 
     return (
@@ -103,16 +108,15 @@ export default class ChallengeListItem extends React.Component {
         <View style={styles.container2}>
           <Text style={[commonstyle.fontRegular, styles.texttitle]}>{title}</Text>
           <View style={styles.clockContainer}>
-            <View style={styles.containerIconClock}>
-             <MaterialCommunityIcons name="alarm" size={25} color={colors.background} style={{marginRight: 5, marginLeft: 5}}/>
-             <Text style={[commonstyle.fontRegular, styles.clock]}>{timer}</Text>
-            </View>
+            {clockView}
           </View>
         </View>
 
+        {stateIcon &&
         <TouchableHighlight style={styles.container3} onPress={this.pressArrowHandler.bind(this)}>
           {stateIcon}
         </TouchableHighlight>
+        }
       </View>
     )
   }
@@ -185,7 +189,7 @@ const styles = StyleSheet.create({
   clockContainer: {
     //flex: 0,
     //alignItems: 'flex-start',
-    width: 123,
+    width: 125,
     justifyContent: 'center',
   },
 
