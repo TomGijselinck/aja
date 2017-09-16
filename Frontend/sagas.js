@@ -29,6 +29,7 @@ function* postChallenge(action) {
       initAction: action,
       error: true
     }});
+    yield getChallenges(action)
   }
 }
 

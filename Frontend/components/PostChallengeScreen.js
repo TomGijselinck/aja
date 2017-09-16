@@ -34,7 +34,6 @@ class PostChallengeScreen extends React.PureComponent {
   }
 
   friendSelected (friend) {
-    console.log(friend)
     this.setState({
       selectedFriend: this.props.friends.filter((item) => item.id === friend)[0],
       modalOpen: false,
@@ -64,7 +63,7 @@ class PostChallengeScreen extends React.PureComponent {
           </View>
           <TouchableOpacity style={styles.friend} onPress={this.openModal.bind(this)}>
             {this.state.selectedFriend
-              ? <Friend name={this.state.selectedFriend.name}/>
+              ? <Friend name={this.state.selectedFriend.name} avatar={this.state.selectedFriend.image_url}/>
               : <View style={styles.friendContainer}>
                 <Avatar containerStyle={styles.avatar}
                         medium
