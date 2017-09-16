@@ -17,7 +17,7 @@ export class Friends extends React.Component {
 
     return ( 
       <Screen>
-        <Header title='Friends'/>
+        <Header title='Friends' icon='user-plus'/>
         <FlatList
           data={list}
           renderItem={({item}) => <FriendListItem friend={item}></FriendListItem>}
