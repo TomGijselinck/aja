@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, FlatList } from 'react-native';
 import { List, ListItem } from 'react-native-elements'
 import Header from './Header.js'
 import { connect } from 'react-redux'
+import Screen from './Screen.js'
 
 import ChallengeListItem from './ChallengeListItem.js'
 
@@ -76,14 +77,14 @@ export class Challenges extends React.Component {
     const list = this.props.challenges.map((elem) => ({...elem, key: elem.id}))
 
     return ( 
-      <View style={{flex: 1}}>
+      <Screen>
         <Header title='Challenges'/>
         <FlatList
           data={list}
           renderItem={(item) => this.renderChallengeItem(item, this.props.navigation, this.props.user_id, this.props.friends)}
           ItemSeparatorComponent={this.itemSeperator}
         /> 
-      </View>
+      </Screen>
     )
   }
 }

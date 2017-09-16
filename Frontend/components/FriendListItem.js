@@ -3,8 +3,7 @@ import { StyleSheet, Text, View, FlatList } from 'react-native';
 import { List, ListItem, Avatar } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 const myIcon = (<Icon name="trending up" size={30} color="#900" />)
-
-
+import colors from '../colors.js'
 
 export default function FriendListItem({children, name, score, avatar}) {
   let scoreSpecific 
@@ -36,7 +35,7 @@ const styles = StyleSheet.create({
   container: {
     // flex: 1,
     flexDirection: 'row',
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
     alignItems: 'center',
     paddingVertical: 20,
     //justifyContent: 'space-around'
@@ -55,13 +54,13 @@ const styles = StyleSheet.create({
 
   textscore: {
     marginHorizontal: 10,
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: 'bold',
     alignSelf: 'center'
   },
 
   scorePositive:{
-    color: 'green',
+    color: colors.darkGreen,
   },
 
   scoreNegative:{

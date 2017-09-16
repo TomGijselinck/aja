@@ -3,8 +3,7 @@ import { StyleSheet, Text, View, FlatList } from 'react-native';
 import { List, ListItem, Avatar } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 const myIcon = (<Icon name="trending up" size={30} color="#900" />)
-
-
+import colors from '../colors.js'
 
 export default function Header({children, title}) {
   return (
@@ -19,7 +18,7 @@ const styles = StyleSheet.create({
     //flex: 1,
     //justifyContent: 'center'
     flexDirection: 'row',
-    backgroundColor: 'lightblue',
+    backgroundColor: colors.main,
     alignItems: 'center',
     //opacity: 0.3,
     height:60,

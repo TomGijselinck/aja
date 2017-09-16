@@ -98,7 +98,6 @@ const styles = StyleSheet.create({
   parentContainer: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: 'white',
     //alignItems: 'center',
     paddingVertical: 20,
     //justifyContent: 'space-around'
@@ -108,7 +107,6 @@ const styles = StyleSheet.create({
   avatarContainer: {
     //flex: 1,
     //flexDirection: 'row',
-    backgroundColor: 'white',
     alignItems: 'center',
     paddingVertical: 20,
     //justifyContent: 'space-around'
@@ -118,7 +116,6 @@ const styles = StyleSheet.create({
   container2: {
     flex: 1,
     //flexDirection: 'row',
-    backgroundColor: 'white',
     //alignItems: 'flex-start',
     paddingVertical: 20,
     marginLeft: 20,
@@ -129,7 +126,6 @@ const styles = StyleSheet.create({
   container3: {
     //flex: 1,
     //flexDirection: 'row',
-    backgroundColor: 'white',
     alignItems: 'flex-start',
     paddingVertical: 20,
     marginRight: 10,
