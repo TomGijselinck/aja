@@ -63,6 +63,8 @@ export class Challenges extends React.Component {
           ]}
           renderItem={(item) => this.renderChallengeItem(item, this.props.navigation, user_id, this.props.friends)}
           ItemSeparatorComponent={this.itemSeperator}
+          onRefresh={() => console.log('refreshing')}
+          refreshing={false}
         /> 
       </Screen>
     )
@@ -88,6 +90,7 @@ const styles = StyleSheet.create({
   sectionListHeader: {
     fontSize: 18,
     backgroundColor: colors.headerListColor,
+    color: colors.text,
     padding: 6,
     marginBottom: 2,
   },

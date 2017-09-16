@@ -84,10 +84,10 @@ export default class ChallengeListItem extends React.Component {
           <Text style={[commonstyle.fontRegular, styles.clock]}>{timer}</Text>
         </View>)
     if (state === 'incoming'){
-      stateIcon = <Icon name="chevron-right" size={40} color="grey"/>
+      stateIcon = <Icon name="chevron-right" size={40} color={colors.text}/>
     }
     else if (state === 'pending'){
-      stateIcon = <Icon name="dots-three-horizontal" size={40} color="grey"/>
+      stateIcon = <Icon name="dots-three-horizontal" size={40} color={colors.text}/>
     }
     else{
       clockView = <Text style={[commonstyle.fontRegular, {color: colors.main, fontSize: 20}]}>{'Completed!'}</Text>
@@ -164,7 +164,8 @@ const styles = StyleSheet.create({
 
   containerIconClock: {
     flexDirection: 'row',
-    backgroundColor: '#DE9796',
+    // backgroundColor: '#DE9796',
+    backgroundColor: colors.clockBackground,
     borderRadius: 8,
     padding: 2,
     paddingLeft: 4,
@@ -183,6 +184,7 @@ const styles = StyleSheet.create({
   texttitle: {
     //marginLeft: 20,
     fontSize: 20,
+    color: colors.text,
     // fontWeight: 'bold',
   },
 
