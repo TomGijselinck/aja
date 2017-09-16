@@ -42,7 +42,7 @@ class PostChallengeScreen extends React.PureComponent {
 
   onSubmit () {
     if (this.state.selectedFriend && this.props.image) {
-      this.props.sendChallenge(this.props.image)
+      this.props.sendChallenge(this.props.image, this.state.selectedFriend.id)
     }
   }
 
@@ -63,7 +63,7 @@ class PostChallengeScreen extends React.PureComponent {
           </View>
           <TouchableOpacity style={styles.friend} onPress={this.openModal.bind(this)}>
             {this.state.selectedFriend
-              ? <Friend name={this.state.selectedFriend.name} avatar={this.state.selectedFriend.image_url}/>
+              ? <Friend friend={this.state.selectedFriend} avatarProp={this.state.selectedFriend.image_url}/>
               : <View style={styles.friendContainer}>
                 <Avatar containerStyle={styles.avatar}
                         medium
@@ -146,11 +146,10 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    sendChallenge (photo) {
+    sendChallenge (photo, receiver_id) {
       dispatch({ type: POST_CHALLENGE, payload: {
         photo,
-        sender_id: 2,
-        receiver_id: 1,
+        receiver_id,
       }})
     },
   }

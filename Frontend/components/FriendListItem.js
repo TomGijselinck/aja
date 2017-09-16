@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 const myIcon = (<Icon name="trending up" size={30} color="#900" />)
 import colors from '../colors.js'
 
-export default function FriendListItem({children, friend}) {
+export default function FriendListItem({children, friend, avatarProp}) {
   const {
     name,
     score,
@@ -13,8 +13,8 @@ export default function FriendListItem({children, friend}) {
     number_of_received_challenges_failed,
     number_of_send_challenges_completed,
     number_of_send_challenges_failed,
-    avatar
   } = friend
+  let avatar = friend.avatar || avatarProp
   let scoreSpecific 
 
   let received_challenges_diff = number_of_received_challenges_completed - number_of_received_challenges_failed
