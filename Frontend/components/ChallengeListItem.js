@@ -133,7 +133,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     //alignItems: 'center',
-    paddingVertical: 10,
+    paddingBottom: 20,
+    paddingTop: 10,
     //justifyContent: 'space-around'
     // justifyContent: 'center',
   },
@@ -142,7 +143,7 @@ const styles = StyleSheet.create({
     //flex: 1,
     //flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 20,
+    //paddingVertical: 20,
     //justifyContent: 'space-around'
     justifyContent: 'center',
   },
@@ -151,7 +152,7 @@ const styles = StyleSheet.create({
     flex: 1,
     //flexDirection: 'row',
     //alignItems: 'flex-start',
-    paddingVertical: 20,
+    //paddingVertical: 20,
     marginLeft: 20,
     //justifyContent: 'space-around'
     // justifyContent: 'center',
@@ -161,7 +162,7 @@ const styles = StyleSheet.create({
     //flex: 1,
     //flexDirection: 'row',
     alignItems: 'flex-start',
-    paddingVertical: 20,
+    //paddingVertical: 20,
     marginRight: 10,
     //justifyContent: 'space-around'
     justifyContent: 'center',
@@ -198,6 +199,7 @@ const styles = StyleSheet.create({
     //alignItems: 'flex-start',
     width: 125,
     justifyContent: 'center',
+    marginTop: 4,
   },
 
   clock: {
