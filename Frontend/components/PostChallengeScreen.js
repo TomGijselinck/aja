@@ -42,7 +42,7 @@ class PostChallengeScreen extends React.PureComponent {
 
   onSubmit () {
     if (this.state.selectedFriend && this.props.image) {
-      this.props.sendChallenge(this.props.image)
+      this.props.sendChallenge(this.props.image, this.state.selectedFriend.id)
     }
   }
 
@@ -146,11 +146,10 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    sendChallenge (photo) {
+    sendChallenge (photo, receiver_id) {
       dispatch({ type: POST_CHALLENGE, payload: {
         photo,
-        sender_id: 2,
-        receiver_id: 1,
+        receiver_id,
       }})
     },
   }

@@ -3,7 +3,7 @@ import { NavigationActions } from 'react-navigation'
 import http from './http'
 import {
   GET_CHALLENGE_LIST, GET_CHALLENGE_LIST_RESULT, GET_FRIENDS_LIST, GET_FRIENDS_LIST_RESULT, IMG_TAKEN, POST_CHALLENGE,
-  POST_CHALLENGE_RESULT
+  POST_CHALLENGE_RESULT, REPLY_CHALLENGE
 } from './actions'
 
 function* init () {
@@ -13,13 +13,19 @@ function* init () {
 
 function* postChallenge(action) {
   try {
+    const currentUser = yield select((state) => state.user)
     yield call(http.post, 'challenge', {
-      body: JSON.stringify(action.payload),
+      body: JSON.stringify({
+        ...action.payload,
+        sender_id: currentUser,
+        state: 'open',
+      })
     })
     yield put({type: POST_CHALLENGE_RESULT, payload: {
       initAction: action,
       error: false,
     }});
+    yield getFriends(action)
     yield put({
       type: 'Navigation/NAVIGATE',
       routeName: 'Challenges',
@@ -76,10 +82,36 @@ function* getChallenges(action) {
 }
 
 function* imgTaken(action) {
-  yield put({
-    type: 'Navigation/NAVIGATE',
-    routeName: 'PostChallenge',
-  })
+  if (action.payload.routeTo) {
+    yield put({
+      type: 'Navigation/NAVIGATE',
+      routeName: action.payload.routeTo,
+    })
+  } else {
+    yield put({
+      type: 'Navigation/NAVIGATE',
+      routeName: 'PostChallenge',
+    })
+  }
+}
+
+function* replyChallenge(action) {
+  try {
+    console.log(action.payload.challenge)
+    console.log(action.payload.photo)
+    yield call(http.post, `challenge/${action.payload.challenge}/reply`, {
+      body: JSON.stringify({
+        reply_photo: action.payload.photo
+    }),
+    })
+    yield put({type: GET_CHALLENGE_LIST})
+    yield put({
+      type: 'Navigation/NAVIGATE',
+      routeName: 'Challenges',
+    })
+  } catch (e) {
+    console.log(e)
+  }
 }
 
 /*
@@ -95,6 +127,7 @@ const mySaga = function* mySaga() {
   yield takeLatest(GET_CHALLENGE_LIST, getChallenges)
   yield takeLatest(POST_CHALLENGE, postChallenge);
   yield takeLatest(IMG_TAKEN, imgTaken);
+  yield takeLatest(REPLY_CHALLENGE, replyChallenge)
 }
 
 export default mySaga;

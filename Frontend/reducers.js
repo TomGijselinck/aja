@@ -5,6 +5,7 @@ const initialState = {
   nav: Navigator.router.getActionForPathAndParams('Login'),
   user: 1,
   currentImage: null,
+  replyImage: null,
   friends: [],
   challenges: [],
 }
@@ -23,9 +24,17 @@ export default function reducer (state = initialState, action) {
   console.log(action)
   switch (action.type) {
     case IMG_TAKEN:
+      if (action.payload.routeTo) {
+        return {
+          ...state,
+          currentImage: null,
+          replyImage: action.payload.image,
+        }
+      }
       return {
         ...state,
         currentImage: action.payload.image,
+        replyImage: null
       }
     case GET_CHALLENGE_LIST_RESULT:
       if (action.payload.error) {

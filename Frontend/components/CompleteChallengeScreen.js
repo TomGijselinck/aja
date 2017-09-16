@@ -4,7 +4,7 @@ import { Image, View, StyleSheet, Text } from 'react-native'
 import { connect } from 'react-redux'
 import { Button, Avatar } from 'react-native-elements'
 
-import { POST_CHALLENGE } from '../actions'
+import { REPLY_CHALLENGE } from '../actions'
 import Friend from './FriendListItem'
 import Screen from './Screen'
 import commonStyles from '../styles'
@@ -17,7 +17,7 @@ class PostChallengeScreen extends React.PureComponent {
     let challenge = {}
 
     if (props.navigation.state.params) {
-      challenge = props.navigation.state.params
+      challenge = props.navigation.state.params.challenge
     }
 
     this.state = {
@@ -37,14 +37,17 @@ class PostChallengeScreen extends React.PureComponent {
     }
   }
 
-  onSubmit () {
-    if (this.state.selectedFriend && this.props.image) {
-      this.props.sendChallenge(this.props.image)
+  onReply () {
+    if (this.props.image) {
+      this.props.sendReply(this.props.image, this.state.challenge.id)
+    } else {
+      this.props.navigation.navigate('CameraScreen', {routeTo: 'CompleteChallenge'})
     }
   }
 
   render () {
     const friend = this.props.friends.filter(({id}) => this.state.challenge.sender_id === id)[0]
+    const buttonText = this.props.image ? 'Send reply' : 'Complete Challenge'
     if (friend) {
       return (
         <Screen>
@@ -61,8 +64,8 @@ class PostChallengeScreen extends React.PureComponent {
               raised
               large
               buttonStyle={styles.button}
-              title='Submit'
-              onPress={this.onSubmit.bind(this)}
+              title={buttonText}
+              onPress={this.onReply.bind(this)}
             />
           </View>
         </Screen>
@@ -118,18 +121,17 @@ const styles = StyleSheet.create({
 
 function mapStateToProps (state) {
   return {
-    image: state.currentImage,
+    image: state.replyImage,
     friends: state.friends,
   }
 }
 
 function mapDispatchToProps (dispatch) {
   return {
-    sendChallenge (photo) {
-      dispatch({ type: POST_CHALLENGE, payload: {
+    sendReply (photo, challenge) {
+      dispatch({ type: REPLY_CHALLENGE, payload: {
         photo,
-        sender_id: 2,
-        receiver_id: 1,
+        challenge,
       }})
     },
   }
