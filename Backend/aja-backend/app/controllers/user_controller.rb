@@ -55,6 +55,8 @@ class UserController < ApplicationController
         friend_details[:name] = friend.name
         friend_details[:image_url] = friend.image_url
         friend_details[:score] = friend.score - user.score
+        friend_details[:number_of_send_challenges_completed] = friend.challenges_received.where(state: 'closed', sender_id: user.id).size
+        friend_details[:number_of_send_challenges_failed] = friend.challenges_received.where(state: 'failed', sender_id: user.id).size
         friends_json.append friend_details
       end
       friends_json
