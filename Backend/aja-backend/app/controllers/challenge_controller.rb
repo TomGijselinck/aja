@@ -13,7 +13,7 @@ class ChallengeController < ApplicationController
     challenge = Challenge.create(challenge_params)
     sender = User.find(challenge_params[:sender_id])
     receiver = User.find(challenge_params[:receiver_id])
-    NotificationHelper.send_challenge_create_notification(sender, receiver)
+    NotificationsSender.send_challenge_create_notification(sender, receiver)
     if challenge
       render json: { head: :ok }
     else
