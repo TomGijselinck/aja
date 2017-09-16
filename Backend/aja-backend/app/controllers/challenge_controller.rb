@@ -24,6 +24,7 @@ class ChallengeController < ApplicationController
   def reply
     challenge = Challenge.find(params[:id])
     challenge.reply_photo = params[:reply_photo]
+    challenge.state = 'closed'
     challenge.save!
     if Challenge.find(challenge.id).reply_photo
       render json: { head: :ok }
