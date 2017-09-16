@@ -7,7 +7,6 @@ import moment from 'moment';
 import TimerMixin from 'react-timer-mixin';
 
 export default class ChallengeListItem extends React.Component {
-  mixins: [TimerMixin]
 
   constructor (props) {
     super(props)

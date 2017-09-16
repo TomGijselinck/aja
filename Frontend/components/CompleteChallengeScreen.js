@@ -1,6 +1,5 @@
 import React from 'react'
-import { Image, TextInput, View, StyleSheet, Text, TouchableOpacity } from 'react-native'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
+import { Image, View, StyleSheet, Text } from 'react-native'
 
 import { connect } from 'react-redux'
 import { Button, Avatar } from 'react-native-elements'
@@ -18,7 +17,7 @@ class PostChallengeScreen extends React.PureComponent {
     let challenge = {}
 
     if (props.navigation.state.params) {
-      challenge = propsnavigation.state.params
+      challenge = props.navigation.state.params
     }
 
     this.state = {
