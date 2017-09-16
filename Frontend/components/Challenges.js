@@ -8,6 +8,7 @@ import colors from '../colors.js'
 import commonstyle from '../styles.js'
 import { GET_CHALLENGE_LIST } from '../actions'
 import ChallengeListItem from './ChallengeListItem.js'
+import moment from 'moment';
 
 export class Challenges extends React.Component {
 
@@ -47,9 +48,11 @@ export class Challenges extends React.Component {
       return {...item, relativeState}
     })
 
-    const listPending = list.filter((elem) => elem.relativeState === 'pending')
-    const listIncoming = list.filter((elem) => elem.relativeState === 'incoming')
-    const listCompleted = list.filter((elem) => elem.relativeState === 'completed')
+    const sortRecentFirst = (a, b) => moment(a.created_at).unix() - moment(b.created_at).unix()
+
+    const listPending = list.filter((elem) => elem.relativeState === 'pending').sort(sortRecentFirst)
+    const listIncoming = list.filter((elem) => elem.relativeState === 'incoming').sort(sortRecentFirst)
+    const listCompleted = list.filter((elem) => elem.relativeState === 'completed').sort(sortRecentFirst).reverse()
 
     const orderedList = [...listIncoming, ...listPending, ...listCompleted]
 
