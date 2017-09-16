@@ -49,13 +49,6 @@ class CameraScreen extends React.PureComponent {
 
 function mapDispatchToProps(dispatch) {
   return {
-    sendChallenge (photo) {
-      dispatch({ type: POST_CHALLENGE, payload: {
-        photo,
-        sender_id: 2,
-        receiver_id: 1,
-      }})
-    },
     takePicture (photoData) {
       dispatch({ type: IMG_TAKEN, payload: {
         image: photoData,

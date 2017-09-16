@@ -1,7 +1,8 @@
 import { call, put, takeEvery, takeLatest, select } from 'redux-saga/effects'
+import { NavigationActions } from 'react-navigation'
 import http from './http'
 import {
-  GET_CHALLENGE_LIST, GET_CHALLENGE_LIST_RESULT, GET_FRIENDS_LIST, GET_FRIENDS_LIST_RESULT, POST_CHALLENGE,
+  GET_CHALLENGE_LIST, GET_CHALLENGE_LIST_RESULT, GET_FRIENDS_LIST, GET_FRIENDS_LIST_RESULT, IMG_TAKEN, POST_CHALLENGE,
   POST_CHALLENGE_RESULT
 } from './actions'
 
@@ -19,6 +20,10 @@ function* postChallenge(action) {
       initAction: action,
       error: false,
     }});
+    yield put({
+      type: 'Navigation/NAVIGATE',
+      routeName: 'Challenges',
+    })
   } catch (e) {
     yield put({type: POST_CHALLENGE_RESULT, payload: {
       initAction: action,
@@ -69,6 +74,13 @@ function* getChallenges(action) {
   }
 }
 
+function* imgTaken(action) {
+  yield put({
+    type: 'Navigation/NAVIGATE',
+    routeName: 'PostChallenge',
+  })
+}
+
 /*
   Alternatively you may use takeLatest.
 
@@ -81,6 +93,7 @@ const mySaga = function* mySaga() {
   yield takeLatest(GET_FRIENDS_LIST, getFriends)
   yield takeLatest(GET_CHALLENGE_LIST, getChallenges)
   yield takeLatest(POST_CHALLENGE, postChallenge);
+  yield takeLatest(IMG_TAKEN, imgTaken);
 }
 
 export default mySaga;

@@ -5,6 +5,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 import { connect } from 'react-redux'
 import { Button, Avatar } from 'react-native-elements'
 
+import { POST_CHALLENGE } from '../actions'
 import Friend from './FriendListItem'
 import FriendsPicker from './FriendsModal'
 import Screen from './Screen'
@@ -38,7 +39,12 @@ class PostChallengeScreen extends React.PureComponent {
       selectedFriend: this.props.friends.filter((item) => item.id === friend)[0],
       modalOpen: false,
     })
+  }
 
+  onSubmit () {
+    if (this.state.selectedFriend && this.props.image) {
+      this.props.sendChallenge(this.props.image)
+    }
   }
 
   render () {
@@ -75,6 +81,7 @@ class PostChallengeScreen extends React.PureComponent {
             large
             buttonStyle={styles.button}
             title='Submit'
+            onPress={this.onSubmit.bind(this)}
           />
         </KeyboardAwareScrollView>
         <FriendsPicker
@@ -138,7 +145,19 @@ function mapStateToProps (state) {
   }
 }
 
+function mapDispatchToProps (dispatch) {
+  return {
+    sendChallenge (photo) {
+      dispatch({ type: POST_CHALLENGE, payload: {
+        photo,
+        sender_id: 2,
+        receiver_id: 1,
+      }})
+    },
+  }
+}
+
 export default connect(
   mapStateToProps,
-  null,
+  mapDispatchToProps,
 )(PostChallengeScreen)
