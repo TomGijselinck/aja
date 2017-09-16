@@ -40,7 +40,7 @@ class UserController < ApplicationController
 
     def check_for_challenge_expiration(user)
       user.challenges_received.each do |challenge|
-        if (Time.now - challenge.time_created_at) > 24.hour
+        if (Time.now - challenge.created_at) > 24.hour
           challenge.state = 'failed'
           challenge.save
         end
