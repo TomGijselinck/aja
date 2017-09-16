@@ -13,4 +13,8 @@ class UserController < ApplicationController
       render json: { head: :bad_request, message: 'Unable to create user' }
     end
   end
+
+  def friends
+    # TODO
+  end
 end
