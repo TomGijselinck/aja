@@ -25,7 +25,6 @@ export default function reducer (state = initialState, action) {
     ...state,
     nav: navReducer(state.nav, action)
   }
-  console.log(action)
   switch (action.type) {
     case IMG_TAKEN:
       if (action.payload.routeTo) {

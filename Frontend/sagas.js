@@ -101,8 +101,6 @@ function* imgTaken(action) {
 
 function* replyChallenge(action) {
   try {
-    console.log(action.payload.challenge)
-    console.log(action.payload.photo)
     yield call(http.post, `challenge/${action.payload.challenge}/reply`, {
       body: JSON.stringify({
         reply_photo: action.payload.photo

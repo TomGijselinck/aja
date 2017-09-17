@@ -52,10 +52,8 @@ export default class ChallengeListItem extends React.Component {
       state,
       challenge
     } = this.props
-    if (state === 'incoming') {
+    if (state === 'incoming' || state === 'completed') {
       navigation.navigate('CompleteChallenge', {challenge})
-    } else {
-      navigation.navigate('CameraScreen')
     }
   }
 
@@ -99,30 +97,32 @@ export default class ChallengeListItem extends React.Component {
     }
 
     return (
-      <View style={styles.parentContainer}>
-        <View style={styles.avatarContainer}>
-          <Avatar containerStyle={styles.avatar}
-            /* small */
-            medium
-            rounded
-            source={{uri: avatar}}
-            onPress={() => console.log("Works!")}
-            activeOpacity={0.7}
-          />
-        </View>
-        <View style={styles.container2}>
-          <Text style={[commonstyle.fontRegular, styles.texttitle]}>{title}</Text>
-          <View style={styles.clockContainer}>
-            {clockView}
+      <TouchableHighlight onPress={this.pressArrowHandler.bind(this)}>
+        <View style={styles.parentContainer}>
+          <View style={styles.avatarContainer}>
+            <Avatar containerStyle={styles.avatar}
+              /* small */
+              medium
+              rounded
+              source={{uri: avatar}}
+              onPress={() => console.log("Works!")}
+              activeOpacity={0.7}
+            />
           </View>
-        </View>
+          <View style={styles.container2}>
+            <Text style={[commonstyle.fontRegular, styles.texttitle]}>{title}</Text>
+            <View style={styles.clockContainer}>
+              {clockView}
+            </View>
+          </View>
 
-        {stateIcon &&
-        <TouchableHighlight style={styles.container3} onPress={this.pressArrowHandler.bind(this)}>
-          {stateIcon}
-        </TouchableHighlight>
-        }
-      </View>
+          {stateIcon &&
+          <TouchableHighlight style={styles.container3} onPress={this.pressArrowHandler.bind(this)}>
+            {stateIcon}
+          </TouchableHighlight>
+          }
+        </View>
+      </TouchableHighlight>
     )
   }
 }

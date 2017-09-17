@@ -51,6 +51,12 @@ class PostChallengeScreen extends React.PureComponent {
   render () {
     const friend = this.props.friends.filter(({id}) => this.state.challenge.sender_id === id)[0]
     const buttonText = this.props.image ? 'Send reply' : 'Complete Challenge'
+    let replyImage
+    if (this.state.challenge.state === 'closed') {
+      replyImage = this.state.challenge.reply_photo
+    } else {
+      replyImage = this.props.image
+    }
     if (friend) {
       return (
         <Screen>
@@ -59,19 +65,22 @@ class PostChallengeScreen extends React.PureComponent {
               <Image resizeMode='contain' style={styles.image}
                      source={{uri: `data:image/jpg;base64,${this.state.challenge.photo}`}}/>
               <Image resizeMode='contain' style={styles.image}
-                     source={{uri: `data:image/jpg;base64,${this.props.image}`}}/>
+                     source={{uri: `data:image/jpg;base64,${replyImage}`}}/>
             </ScrollView>
             <View style={styles.inputContainer}>
               <Text style={[commonStyles.fontRegular, styles.input]}>{this.state.challenge.comment}</Text>
             </View>
             <Friend friend={friend} avatarProp={friend.image_url}/>
-            <Button
-              fontFamily={'RobotoSlab-Bold'}
-              large
-              buttonStyle={styles.button}
-              title={buttonText}
-              onPress={this.onReply.bind(this)}
-            />
+            { this.state.challenge.state !== 'closed'
+              ? <Button
+                fontFamily={'RobotoSlab-Bold'}
+                large
+                buttonStyle={styles.button}
+                title={buttonText}
+                onPress={this.onReply.bind(this)}
+              />
+              : null
+            }
           </View>
         </Screen>
       )
