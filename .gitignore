@@ -4,3 +4,11 @@ Frontend/node_modules/
 Frontend/\.expo/
 
 Frontend/android/app/build/
+
+Frontend/android/\.idea/
+
+Frontend/android/local\.properties
+
+Frontend/android/build
+Frontend/android/.gradle
+*.iml

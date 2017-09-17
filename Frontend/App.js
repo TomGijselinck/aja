@@ -1,24 +1,28 @@
 import React from 'react';
-import { TabNavigator } from 'react-navigation'
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import createSagaMiddleware from 'redux-saga'
 
-import App from './components/App'
-import App2 from './components/Friends'
+import Navigator from './navigator'
+import mySaga from './sagas'
+import reducers from './reducers'
 
-const MyApp = TabNavigator({
-  Home: {
-    screen: App,
-  },
-  Notifications: {
-    screen: App2,
-  },
-}, {
-  tabBarComponent: () => null,
-  tabBarPosition: 'bottom',
-  animationEnabled: true,
-  swipeEnabled: true,
-  tabBarOptions: {
-    activeTintColor: '#e91e63',
-  },
-});
+const sagaMiddleware = createSagaMiddleware()
 
-export default MyApp
+
+const store = createStore(
+  reducers,
+  applyMiddleware(sagaMiddleware)
+)
+
+sagaMiddleware.run(mySaga)
+
+store.dispatch({type: 'INIT'})
+
+export default function MyApp () {
+  return (
+    <Provider store={store}>
+      <Navigator/>
+    </Provider>
+  )
+}
