@@ -10,6 +10,7 @@ import Friend from './FriendListItem'
 import FriendsPicker from './FriendsModal'
 import Screen from './Screen'
 import colors from '../colors.js'
+import commonStyles from '../styles'
 
 class PostChallengeScreen extends React.PureComponent {
 
@@ -64,6 +65,7 @@ class PostChallengeScreen extends React.PureComponent {
             <TextInput
               style={styles.input}
               placeholder="What's your challenge?"
+              placeholderStyle={commonStyles.fontRegular}
               maxLength={50}
               underlineColorAndroid='white'
               onChangeText = {(text)=> this.onTextChanged(text)}
@@ -80,7 +82,7 @@ class PostChallengeScreen extends React.PureComponent {
                         title="?"
                         activeOpacity={1}
                 />
-                <Text style={styles.input}>Select a friend...</Text>
+                <Text style={[commonStyles.fontRegular, styles.input]}>Select a friend...</Text>
               </View>
             }
           </TouchableOpacity>

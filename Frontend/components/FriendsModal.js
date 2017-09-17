@@ -3,6 +3,8 @@ import { FlatList, StyleSheet, Text, TouchableWithoutFeedback, View } from 'reac
 import Modal from 'react-native-modalbox'
 import { Avatar } from 'react-native-elements'
 
+import commonStyles from '../styles'
+
 class FriendPicker extends React.PureComponent {
   render () {
     const {isOpen, onClosed, friends} = this.props
@@ -35,7 +37,7 @@ class FriendPicker extends React.PureComponent {
                   source={{uri: item.image_url}}
                   activeOpacity={1}
           />
-          <Text> {item.name} </Text>
+          <Text style={commonStyles.fontRegular}>{item.name}</Text>
         </View>
       </TouchableWithoutFeedback>
     )

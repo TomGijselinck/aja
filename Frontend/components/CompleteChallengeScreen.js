@@ -8,6 +8,7 @@ import { REPLY_CHALLENGE } from '../actions'
 import Friend from './FriendListItem'
 import Screen from './Screen'
 import commonStyles from '../styles'
+import colors from '../colors'
 
 const {width, height} = Dimensions.get('window')
 
@@ -65,7 +66,7 @@ class PostChallengeScreen extends React.PureComponent {
             </View>
             <Friend friend={friend} avatarProp={friend.image_url}/>
             <Button
-              raised
+              fontFamily={'RobotoSlab-Bold'}
               large
               buttonStyle={styles.button}
               title={buttonText}
@@ -116,7 +117,8 @@ const styles = StyleSheet.create({
     borderTopColor: 'lightgray',
   },
   button: {
-    backgroundColor: 'lightblue'
+    backgroundColor: colors.main,
+    borderRadius: 8,
   },
   avatar: {
     marginHorizontal: 10,
